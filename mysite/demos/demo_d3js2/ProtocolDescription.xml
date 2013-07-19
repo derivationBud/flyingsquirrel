@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="Protocol.xslt"?>
+<asn1>
+  <type name="ToolsPDUs">
+    <field name="present" type="enum">
+      <values>
+        <value name="ToolsPDUs_PR_NOTHING" number="0" />
+        <value name="ToolsPDUs_PR_DataExchange" number="1" />
+        <value name="ToolsPDUs_PR_DebugCommand" number="2" />
+        <value name="ToolsPDUs_PR_SimulationEvent" number="3" />
+        <value name="ToolsPDUs_PR_RFCommand" number="4" />
+        <value name="ToolsPDUs_PR_ResourceCommand" number="5" />
+        <value name="ToolsPDUs_PR_CodeCoverageCommand" number="6" />
+        <value name="ToolsPDUs_PR_CommandError" number="7" />
+        <value name="ToolsPDUs_PR_PMUCommand" number="8" />
+        <value name="ToolsPDUs_PR_TimeStampType" number="9" />
+        <value name="ToolsPDUs_PR_TimeOut" number="10" />
+        <value name="ToolsPDUs_PR_EmulatorCommand" number="11" />
+        <value name="ToolsPDUs_PR_GroupedPDUs" number="12" />
+        <value name="ToolsPDUs_PR_RisenEvent" number="13" />
+        <value name="ToolsPDUs_PR_MemoryMapping" number="14" />
+        <value name="ToolsPDUs_PR_TraceCommand" number="15" />
+      </values>
+    </field>
+    <field name="choice" type="Choice">
+      <field name="dataExchange" type="DataExchange">
+        <type name="DataExchange">
+          <field name="srcPeripheralId" type="EPeripheralIds">
+            <type name="EPeripheralIds" type="enum">
+              <values>
+                <value name="uartH" number="0" />
+                <value name="iso7816" number="1" />
+                <value name="swpSim" number="3" />
+                <value name="uartP" number="4" />
+                <value name="i2c" number="5" />
+                <value name="spi" number="6" />
+                <value name="pmu" number="11" />
+                <value name="dclb" number="13" />
+                <value name="swpSe1" number="14" />
+                <value name="swpSe2" number="15" />
+                <value name="unknown" number="998" />
+                <value name="all" number="999" />
+              </values>
+            </type>
+          </field>
+          <field name="dstPeripheralId" type="EPeripheralIds">
+            <type name="EPeripheralIds" type="enum">
+              <values>
+                <value name="uartH" number="0" />
+                <value name="iso7816" number="1" />
+                <value name="swpSim" number="3" />
+                <value name="uartP" number="4" />
+                <value name="i2c" number="5" />
+                <value name="spi" number="6" />
+                <value name="pmu" number="11" />
+                <value name="dclb" number="13" />
+                <value name="swpSe1" number="14" />
+                <value name="swpSe2" number="15" />
+                <value name="unknown" number="998" />
+                <value name="all" number="999" />
+              </values>
+            </type>
+          </field>
+          <field name="dataCommand" type="DataCommand">
+            <type name="DataCommand">
+              <field name="present" type="enum">
+                <values>
+                  <value name="DataCommand_PR_NOTHING" number="0" />
+                  <value name="DataCommand_PR_SendData" number="1" />
+                  <value name="DataCommand_PR_ResponseData" number="2" />
+                </values>
+              </field>
+              <field name="choice" type="Choice">
+                <field name="sendata" type="SendData">
+                  <type name="SendData">
+                    <field name="data" type="OCTET STRING"></field>
+                    <field name="bitCount" type="INTEGER"></field>
+                    <field name="startBitCount" type="INTEGER"></field>
+                    <field name="collisionBit" type="INTEGER"></field>
+                    <field name="fblen" type="INTEGER"></field>
+                    <field name="lblen" type="INTEGER"></field>
+                    <field name="expectedResponse" type="OCTET STRING" optional="true" ></field>
+                    <field name="timeout" type="TimeOut" optional="true">
+                      <type name="TimeOut">
+                        <field name="id" type="INTEGER"></field>
+                        <field name="fraction" type="INTEGER"></field>
+                        <field name="seconds" type="INTEGER"></field>
+                        <field name="timestamp" type="TimeStampType" optional="true">
+                          <type name="TimeStampType">
+                            <field name="fraction" type="INTEGER"></field>
+                            <field name="seconds" type="INTEGER"></field>
+                            <field name="id" type="INTEGER"></field>
+                            <field name="type" type="TimeStampKind">
+                              <type name="TimeStampKind" type="enum">
+                                <values>
+                                  <value name="onEvent" number="0" />
+                                  <value name="absolute" number="1" />
+                                  <value name="relative" number="2" />
+                                </values>
+                              </type>
+                            </field>
+                            <field name="timeReferenceId" type="INTEGER"></field>
+                            <field name="eventToTrigg" type="AllEvents">
+                              <type name="AllEvents">
+                                <field name="present" type="enum">
+                                  <values>
+                                    <value name="AllEvents_PR_NOTHING" number="0" />
+                                    <value name="AllEvents_PR_EDebugEvents" number="1" />
+                                    <value name="AllEvents_PR_EDataExchangeEvents" number="2" />
+                                  </values>
+                                </field>
+                                <field name="choice" type="Choice">
+                                  <field name="debugEvent" type="EDebugEvents">
+                                    <type name="EDebugEvents" type="enum">
+                                      <values>
+                                        <value name="stepExecuted" number="0" />
+                                        <value name="timer" number="1" />
+                                        <value name="memoryAccess" number="2" />
+                                        <value name="executedInstruction" number="3" />
+                                        <value name="breakpoint" number="4" />
+                                        <value name="reset" number="5" />
+                                        <value name="fileLoaded" number="6" />
+                                        <value name="executionStarted" number="7" />
+                                        <value name="executionStopped" number="8" />
+                                      </values>
+                                    </type>
+                                  </field>
+                                  <field name="dataExchangeEvent" type="EDataExchangeEvents">
+                                    <type name="EDataExchangeEvents" type="enum">
+                                      <values>
+                                        <value name="dataReceived" number="0" />
+                                        <value name="dataSent" number="1" />
+                                      </values>
+                                    </type>
+                                  </field>
+                                  <field name="swpEvent" type="ESWPEvents">
+                                    <type name="ESWPEvents" type="enum">
+                                      <values>
+                                        <value name="resetWakeUpLine" number="0" />
+                                      </values>
+                                    </type>
+                                  </field>
+                                </field>
+                              </type>
+                            </field>
+                          </type>
+                        </field>
+                      </type>
+                    </field>
+                  </type>
+                </field>
+                <field name="responseData" type="ResponseData">
+                  <type name="ResponseData">
+                    <field name="status" type="INTEGER"></field>
+                    <field name="error" type="Error">
+                      <type name="Error">
+                        <field name="code" type="INTEGER"></field>
+                        <field name="message" type="VisibleString"></field>
+                      </type>
+                    </field>
+                    <field name="data" type="OCTET STRING" optional="true" ></field>
+                    <field name="bitCount" type="INTEGER"></field>
+                    <field name="startBitCount" type="INTEGER"></field>
+                    <field name="collisionBit" type="INTEGER"></field>
+                    <field name="fblen" type="INTEGER"></field>
+                    <field name="lblen" type="INTEGER"></field>
+                  </type>
+                </field>
+                <field name="waitData" type="WaitData">
+                  <type name="WaitData">
+                    <field name="expectedData" type="OCTET STRING"></field>
+                    <field name="bitCount" type="INTEGER"></field>
+                    <field name="startBitCount" type="INTEGER"></field>
+                    <field name="collisionBit" type="INTEGER"></field>
+                    <field name="fblen" type="INTEGER"></field>
+                    <field name="lblen" type="INTEGER"></field>
+                    <field name="timeout" type="TimeOut" optional="true" ></field>
+                  </type>
+                </field>
+              </field>
+            </type>
+          </field>
+          <field name="timestamp" type="TimeStampType" optional="true" ></field>
+          <field name="protocolInformations" type="ProtocolInfo" optional="true">
+            <type name="ProtocolInfo">
+              <field name="present" type="enum">
+                <values>
+                  <value name="ProtocolInfo_PR_NOTHING" number="0" />
+                  <value name="ProtocolInfo_PR_RFProtocol" number="1" />
+                  <value name="ProtocolInfo_PR_I2CProtocol" number="2" />
+                  <value name="ProtocolInfo_PR_SPIProtocol" number="3" />
+                  <value name="ProtocolInfo_PR_SWPProtocol" number="4" />
+                </values>
+              </field>
+              <field name="choice" type="Choice">
+                <field name="rf" type="RFProtocol">
+                  <type name="RFProtocol">
+                    <field name="standard" type="ERFProtocols">
+                      <type name="ERFProtocols" type="enum">
+                        <values>
+                          <value name="iso14443A" number="0" />
+                          <value name="iso14443B" number="1" />
+                          <value name="iso15693" number="2" />
+                          <value name="felica" number="3" />
+                        </values>
+                      </type>
+                    </field>
+                    <field name="bitRate" type="EBitRates">
+                      <type name="EBitRates" type="enum">
+                        <values>
+                          <value name="br26k" number="0" />
+                          <value name="br106k" number="1" />
+                          <value name="br212k" number="2" />
+                          <value name="br424k" number="3" />
+                          <value name="br848k" number="4" />
+                          <value name="br1M6" number="5" />
+                          <value name="br3M2" number="6" />
+                          <value name="br6M4" number="7" />
+                        </values>
+                      </type>
+                    </field>
+                    <field name="frameConfig" type="FrameConfig" optional="true">
+                      <type name="FrameConfig">
+                        <field name="parity" type="Parity">
+                          <type name="Parity" type="enum">
+                            <values>
+                              <value name="none" number="0" />
+                              <value name="even" number="1" />
+                              <value name="odd" number="2" />
+                            </values>
+                          </type>
+                        </field>
+                        <field name="startBit" type="BOOLEAN"></field>
+                        <field name="stopBit" type="BOOLEAN"></field>
+                        <field name="sof" type="BOOLEAN"></field>
+                        <field name="eof" type="BOOLEAN"></field>
+                        <field name="oneFrmPerByte" type="BOOLEAN"></field>
+                        <field name="crc" type="BOOLEAN"></field>
+                        <field name="invCrc" type="BOOLEAN"></field>
+                      </type>
+                    </field>
+                  </type>
+                </field>
+                <field name="i2c" type="I2CProtocol">
+                  <type name="I2CProtocol">
+                    <field name="addressSize" type="EI2CAddressSize">
+                      <type name="EI2CAddressSize" type="enum">
+                        <values>
+                          <value name="address7bits" number="0" />
+                          <value name="address10bits" number="1" />
+                        </values>
+                      </type>
+                    </field>
+                    <field name="addressI2C" type="INTEGER"></field>
+                    <field name="bitRate" type="INTEGER" optional="true" ></field>
+                    <field name="lenOn2bytes" type="BOOLEAN"></field>
+                    <field name="lenOn" type="BOOLEAN"></field>
+                    <field name="lrcOn" type="BOOLEAN"></field>
+                  </type>
+                </field>
+                <field name="spi" type="SPIProtocol">
+                  <type name="SPIProtocol">
+                    <field name="mode" type="SPIMode">
+                      <type name="SPIMode" type="enum">
+                        <values>
+                          <value name="fullDuplex" number="0" />
+                          <value name="halfDuplex1line" number="1" />
+                          <value name="halfDuplex2lines" number="2" />
+                        </values>
+                      </type>
+                    </field>
+                    <field name="bitRate" type="INTEGER" optional="true" ></field>
+                    <field name="lsbfe" type="BOOLEAN"></field>
+                    <field name="lenOn" type="BOOLEAN"></field>
+                    <field name="lrcOn" type="BOOLEAN"></field>
+                    <field name="cpol" type="BOOLEAN"></field>
+                    <field name="cpha" type="BOOLEAN"></field>
+                    <field name="irqMode" type="BOOLEAN"></field>
+                  </type>
+                </field>
+                <field name="swp" type="SWPProtocol">
+                  <type name="SWPProtocol">
+                    <field name="bitRate" type="INTEGER"></field>
+                  </type>
+                </field>
+                <field name="iso7816" type="ISO7816Protocol">
+                  <type name="ISO7816Protocol">
+                    <field name="bitRate" type="INTEGER"></field>
+                    <field name="convention" type="Convention">
+                      <type name="Convention" type="enum">
+                        <values>
+                          <value name="inverse" number="0" />
+                          <value name="direct" number="1" />
+                        </values>
+                      </type>
+                    </field>
+                    <field name="revio" type="RevIO">
+                      <type name="RevIO" type="enum">
+                        <values>
+                          <value name="afterLastReceiveOnly" number="0" />
+                          <value name="always" number="1" />
+                        </values>
+                      </type>
+                    </field>
+                    <field name="pcrre" type="BOOLEAN" optional="true" ></field>
+                    <field name="pctre" type="BOOLEAN" optional="true" ></field>
+                  </type>
+                </field>
+              </field>
+            </type>
+          </field>
+        </type>
+      </field>
+      <field name="debugCommand" type="DebugCommand">
+        <type name="DebugCommand">
+          <field name="command" type="EDebugCommands">
+            <type name="EDebugCommands" type="enum">
+              <values>
+                <value name="start" number="0" />
+                <value name="stop" number="1" />
+                <value name="run" number="2" />
+                <value name="stepIn" number="3" />
+                <value name="stepOut" number="4" />
+                <value name="breakAtAddress" number="5" />
+                <value name="breakAtTime" number="6" />
+                <value name="setByte" number="7" />
+                <value name="setWord" number="8" />
+                <value name="setDWord" number="9" />
+                <value name="setRegister" number="10" />
+                <value name="setTime" number="11" />
+                <value name="setFrequency" number="12" />
+                <value name="getByte" number="13" />
+                <value name="getWord" number="14" />
+                <value name="getDWord" number="15" />
+                <value name="getRegister" number="16" />
+                <value name="getTime" number="17" />
+                <value name="getFrequency" number="18" />
+                <value name="getinfo" number="19" />
+                <value name="setMemory" number="20" />
+                <value name="getMemory" number="21" />
+                <value name="loadCode" number="22" />
+                <value name="dataResponse" number="23" />
+              </values>
+            </type>
+          </field>
+          <field name="parameters" type="Parameters" optional="true">
+            <type name="Parameters">
+              <field name="present" type="enum">
+                <values>
+                  <value name="Parameters_PR_NOTHING" number="0" />
+                  <value name="Parameters_PR_RunParameters" number="1" />
+                  <value name="Parameters_PR_BreakAtAddressParameters" number="2" />
+                  <value name="Parameters_PR_BreakAtTimeParameters" number="3" />
+                  <value name="Parameters_PR_GetSetParameters" number="4" />
+                </values>
+              </field>
+              <field name="choice" type="Choice">
+                <field name="runParams" type="RunParameters">
+                  <type name="RunParameters">
+                    <field name="time" type="INTEGER"></field>
+                    <field name="unit" type="TimeUnit">
+                      <type name="TimeUnit" type="enum">
+                        <values>
+                          <value name="miliseconds" number="0" />
+                          <value name="microseconds" number="1" />
+                          <value name="nanoseconds" number="2" />
+                        </values>
+                      </type>
+                    </field>
+                  </type>
+                </field>
+                <field name="breakAtAddressParams" type="BreakAtAddressParameters">
+                  <type name="BreakAtAddressParameters">
+                    <field name="address" type="ADDRESS20BITS"></field>
+                    <field name="hitcount" type="INTEGER"></field>
+                  </type>
+                </field>
+                <field name="breakAtTimeParams" type="BreakAtTimeParameters">
+                  <type name="BreakAtTimeParameters">
+                    <field name="time" type="INTEGER"></field>
+                  </type>
+                </field>
+                <field name="getsetParams" type="GetSetParameters">
+                  <type name="GetSetParameters">
+                    <field name="space" type="INTEGER"></field>
+                    <field name="address" type="ADDRESS20BITS"></field>
+                    <field name="data" type="OCTET STRING" optional="true" ></field>
+                    <field name="value" type="INTEGER" optional="true" ></field>
+                  </type>
+                </field>
+                <field name="loadCodeParams" type="LoadCodeParameters">
+                  <type name="LoadCodeParameters">
+                    <field name="fileName" type="VisibleString"></field>
+                    <field name="fileFormat" type="EFileFormat">
+                      <type name="EFileFormat" type="enum">
+                        <values>
+                          <value name="fileFormatHEX" number="0" />
+                          <value name="fileFormatVER" number="1" />
+                        </values>
+                      </type>
+                    </field>
+                    <field name="fileSize" type="INTEGER" optional="true" ></field>
+                    <field name="addressStart" type="INTEGER" optional="true" ></field>
+                  </type>
+                </field>
+              </field>
+            </type>
+          </field>
+          <field name="timeStamp" type="TimeStampType" optional="true" ></field>
+        </type>
+      </field>
+      <field name="simulationEvent" type="SimulationEvent">
+        <type name="SimulationEvent">
+          <field name="event" type="EDebugEvents">
+            <type name="EDebugEvents" type="enum">
+              <values>
+                <value name="stepExecuted" number="0" />
+                <value name="timer" number="1" />
+                <value name="memoryAccess" number="2" />
+                <value name="executedInstruction" number="3" />
+                <value name="breakpoint" number="4" />
+                <value name="reset" number="5" />
+                <value name="fileLoaded" number="6" />
+                <value name="executionStarted" number="7" />
+                <value name="executionStopped" number="8" />
+              </values>
+            </type>
+          </field>
+          <field name="timestamp" type="TimeStampType" optional="true" ></field>
+        </type>
+      </field>
+      <field name="rfCommand" type="RFCommand">
+        <type name="RFCommand">
+          <field name="command" type="ERFCommands">
+            <type name="ERFCommands" type="enum">
+              <values>
+                <value name="powerON" number="0" />
+                <value name="powerOFF" number="1" />
+                <value name="sof" number="2" />
+                <value name="eof" number="3" />
+                <value name="reset" number="4" />
+                <value name="cardIn" number="5" />
+                <value name="cardOut" number="6" />
+                <value name="flush" number="7" />
+              </values>
+            </type>
+          </field>
+          <field name="timestamp" type="TimeStampType" optional="true" ></field>
+        </type>
+      </field>
+      <field name="resourceCommand" type="ResourceCommand">
+        <type name="ResourceCommand">
+          <field name="present" type="enum">
+            <values>
+              <value name="ResourceCommand_PR_NOTHING" number="0" />
+              <value name="ResourceCommand_PR_GetResourceInfo" number="1" />
+              <value name="ResourceCommand_PR_GetPeripheralInfo" number="2" />
+              <value name="ResourceCommand_PR_GetModuleInfo" number="3" />
+              <value name="ResourceCommand_PR_GetInfo" number="4" />
+            </values>
+          </field>
+          <field name="choice" type="Choice">
+            <field name="getResourceInfo" type="GetResourceInfo">
+              <type name="GetResourceInfo">
+                <field name="resourceInfo" type="ResourceInfo">
+                  <type name="ResourceInfo">
+                    <field name="identity" type="Identity">
+                      <type name="Identity">
+                        <field name="index" type="INTEGER"></field>
+                        <field name="name" type="VisibleString"></field>
+                        <field name="version" type="Version">
+                          <type name="Version">
+                            <field name="major" type="INTEGER"></field>
+                            <field name="minor" type="INTEGER"></field>
+                            <field name="build" type="INTEGER"></field>
+                            <field name="revision" type="INTEGER"></field>
+                          </type>
+                        </field>
+                      </type>
+                    </field>
+                    <field name="peripheralsCount" type="INTEGER"></field>
+                    <field name="modulesCount" type="INTEGER"></field>
+                    <field name="simulatedTime" type="BOOLEAN"></field>
+                    <field name="protocolMD5" type="VisibleString"></field>
+                  </type>
+                </field>
+              </type>
+            </field>
+            <field name="getPeripheralInfo" type="GetPeripheralInfo">
+              <type name="GetPeripheralInfo">
+                <field name="peripheralInfo" type="PeripheralInfo">
+                  <type name="PeripheralInfo">
+                    <field name="identity" type="Identity"></field>
+                    <field name="type" type="EPeripheralTypes">
+                      <type name="EPeripheralTypes" type="enum">
+                        <values>
+                          <value name="rf" number="0" />
+                          <value name="rf1G" number="1" />
+                          <value name="rf2G" number="2" />
+                          <value name="iso7816" number="3" />
+                          <value name="spi" number="4" />
+                          <value name="i2c" number="5" />
+                          <value name="swp" number="6" />
+                          <value name="rxtx" number="7" />
+                        </values>
+                      </type>
+                    </field>
+                  </type>
+                </field>
+              </type>
+            </field>
+            <field name="getModuleInfo" type="GetModuleInfo">
+              <type name="GetModuleInfo">
+                <field name="modulesInfo" type="ModulesInfo">
+                  <type name="ModulesInfo"></type>
+                </field>
+              </type>
+            </field>
+            <field name="getInfo" type="GetInfo">
+              <type name="GetInfo">
+                <field name="resourceInfo" type="ResourceInfo" optional="true" ></field>
+                <field name="modulesInfo" type="ModulesInfo" optional="true" ></field>
+                <field name="peripheralsInfo" type="PeripheralsInfo" optional="true">
+                  <type name="PeripheralsInfo"></type>
+                </field>
+              </type>
+            </field>
+            <field name="peripheralSelect" type="PeripheralSelect">
+              <type name="PeripheralSelect">
+                <field name="peripheralId" type="EPeripheralIds">
+                  <type name="EPeripheralIds" type="enum">
+                    <values>
+                      <value name="uartH" number="0" />
+                      <value name="iso7816" number="1" />
+                      <value name="swpSim" number="3" />
+                      <value name="uartP" number="4" />
+                      <value name="i2c" number="5" />
+                      <value name="spi" number="6" />
+                      <value name="pmu" number="11" />
+                      <value name="dclb" number="13" />
+                      <value name="swpSe1" number="14" />
+                      <value name="swpSe2" number="15" />
+                      <value name="unknown" number="998" />
+                      <value name="all" number="999" />
+                    </values>
+                  </type>
+                </field>
+              </type>
+            </field>
+          </field>
+        </type>
+      </field>
+      <field name="codeCoverageCommand" type="CodeCoverageCommand">
+        <type name="CodeCoverageCommand">
+          <field name="timestamp" type="TimeStampType"></field>
+          <field name="command" type="ECodeCoverageCommands">
+            <type name="ECodeCoverageCommands" type="enum">
+              <values>
+                <value name="clean" number="0" />
+                <value name="get" number="1" />
+                <value name="set" number="2" />
+                <value name="on" number="3" />
+                <value name="off" number="4" />
+                <value name="save" number="5" />
+                <value name="load" number="6" />
+              </values>
+            </type>
+          </field>
+          <field name="cCodeCoverage" type="CCodeCoverage" optional="true">
+            <type name="CCodeCoverage">
+              <field name="results" type="Results">
+                <type name="Results">
+                  <field name="supervisorRate" type="REAL"></field>
+                  <field name="protectedRate" type="REAL"></field>
+                  <field name="numberOfInstructions" type="INTEGER"></field>
+                  <field name="numberOfInstructionsAnalysed" type="INTEGER"></field>
+                  <field name="supervisorMode" type="SupervisorMode">
+                    <type name="SupervisorMode">
+                      <field name="range" type="Range">
+                        <type name="Range">
+                          <field name="name" type="VisibleString"></field>
+                          <field name="coveredRate" type="REAL"></field>
+                          <field name="hitAddresses" type="HitAddresses">
+                            <type name="HitAddresses"></type>
+                          </field>
+                        </type>
+                      </field>
+                    </type>
+                  </field>
+                </type>
+              </field>
+              <field name="rangeDefinitions" type="RangeDefinitions">
+                <type name="RangeDefinitions"></type>
+              </field>
+            </type>
+          </field>
+        </type>
+      </field>
+      <field name="error" type="CommandError">
+        <type name="CommandError">
+          <field name="code" type="INTEGER"></field>
+          <field name="message" type="VisibleString"></field>
+        </type>
+      </field>
+      <field name="pmuCommand" type="PMUCommand">
+        <type name="PMUCommand">
+          <field name="command" type="EPMUCommands">
+            <type name="EPMUCommands" type="enum">
+              <values>
+                <value name="get" number="0" />
+                <value name="set" number="1" />
+                <value name="response" number="2" />
+              </values>
+            </type>
+          </field>
+          <field name="values" type="PMUValues" optional="true">
+            <type name="PMUValues">
+              <field name="txFault" type="BOOLEAN" optional="true" ></field>
+              <field name="simFault" type="BOOLEAN" optional="true" ></field>
+              <field name="seFault" type="BOOLEAN" optional="true" ></field>
+              <field name="se1Fault" type="BOOLEAN" optional="true" ></field>
+              <field name="se2Fault" type="BOOLEAN" optional="true" ></field>
+              <field name="xTAL" type="INTEGER" optional="true" ></field>
+              <field name="xTALType" type="ExTALType" optional="true">
+                <type name="ExTALType" type="enum">
+                  <values>
+                    <value name="pll" number="0" />
+                    <value name="osc" number="1" />
+                  </values>
+                </type>
+              </field>
+              <field name="vField" type="INTEGER" optional="true" ></field>
+              <field name="vReaderField" type="INTEGER" optional="true" ></field>
+              <field name="vBat" type="INTEGER" optional="true" ></field>
+              <field name="vdd1p8v" type="INTEGER" optional="true" ></field>
+              <field name="vRstWUp" type="INTEGER" optional="true" ></field>
+              <field name="powerInSim" type="INTEGER" optional="true" ></field>
+              <field name="powerInSe" type="INTEGER" optional="true" ></field>
+              <field name="powerInSe1" type="INTEGER" optional="true" ></field>
+              <field name="powerInSe2" type="INTEGER" optional="true" ></field>
+              <field name="refIO" type="INTEGER" optional="true" ></field>
+            </type>
+          </field>
+          <field name="timestamp" type="TimeStampType" optional="true" ></field>
+        </type>
+      </field>
+      <field name="timestamp" type="TimeStampType"></field>
+      <field name="timeout" type="TimeOut"></field>
+      <field name="emulatorCommand" type="EmulatorCommand">
+        <type name="EmulatorCommand">
+          <field name="command" type="EEmulatorCommands">
+            <type name="EEmulatorCommands" type="enum">
+              <values>
+                <value name="exit" number="0" />
+                <value name="stepMode" number="1" />
+              </values>
+            </type>
+          </field>
+        </type>
+      </field>
+      <field name="group" type="GroupedPDUs" optional="true">
+        <type name="GroupedPDUs"></type>
+      </field>
+      <field name="risenEvent" type="RisenEvent">
+        <type name="RisenEvent">
+          <field name="event" type="Event">
+            <type name="Event">
+              <field name="present" type="enum">
+                <values>
+                  <value name="Event_PR_NOTHING" number="0" />
+                  <value name="Event_PR_EDebugEvents" number="1" />
+                  <value name="Event_PR_EDataExchangeEvents" number="2" />
+                </values>
+              </field>
+              <field name="choice" type="Choice">
+                <field name="debugEvent" type="EDebugEvents">
+                  <type name="EDebugEvents" type="enum">
+                    <values>
+                      <value name="stepExecuted" number="0" />
+                      <value name="timer" number="1" />
+                      <value name="memoryAccess" number="2" />
+                      <value name="executedInstruction" number="3" />
+                      <value name="breakpoint" number="4" />
+                      <value name="reset" number="5" />
+                      <value name="fileLoaded" number="6" />
+                      <value name="executionStarted" number="7" />
+                      <value name="executionStopped" number="8" />
+                    </values>
+                  </type>
+                </field>
+                <field name="dataExchangeEvent" type="EDataExchangeEvents">
+                  <type name="EDataExchangeEvents" type="enum">
+                    <values>
+                      <value name="dataReceived" number="0" />
+                      <value name="dataSent" number="1" />
+                    </values>
+                  </type>
+                </field>
+                <field name="swpEvent" type="ESWPEvents">
+                  <type name="ESWPEvents" type="enum">
+                    <values>
+                      <value name="resetWakeUpLine" number="0" />
+                    </values>
+                  </type>
+                </field>
+              </field>
+            </type>
+          </field>
+          <field name="timestamp" type="TimeStampType" optional="true" ></field>
+        </type>
+      </field>
+      <field name="memoryMapping" type="MemoryMapping">
+        <type name="MemoryMapping">
+          <field name="name" type="VisibleString"></field>
+          <field name="id" type="VisibleString" optional="true" ></field>
+          <field name="description" type="VisibleString" optional="true" ></field>
+          <field name="baseAddress" type="VisibleString" optional="true" ></field>
+          <field name="registerCollection" type="RegisterCollection">
+            <type name="RegisterCollection"></type>
+          </field>
+          <field name="bufferCollection" type="BufferCollection">
+            <type name="BufferCollection"></type>
+          </field>
+        </type>
+      </field>
+      <field name="traceCommand" type="TraceCommand">
+        <type name="TraceCommand">
+          <field name="command" type="ETraceCommands">
+            <type name="ETraceCommands" type="enum">
+              <values>
+                <value name="comment" number="0" />
+                <value name="setTraceOn" number="1" />
+                <value name="setTraceOff" number="2" />
+                <value name="setTraceConfig" number="3" />
+                <value name="configuration" number="4" />
+              </values>
+            </type>
+          </field>
+          <field name="parameters" type="TraceParameters" optional="true">
+            <type name="TraceParameters">
+              <field name="peripheralId" type="EPeripheralIds" optional="true">
+                <type name="EPeripheralIds" type="enum">
+                  <values>
+                    <value name="uartH" number="0" />
+                    <value name="iso7816" number="1" />
+                    <value name="swpSim" number="3" />
+                    <value name="uartP" number="4" />
+                    <value name="i2c" number="5" />
+                    <value name="spi" number="6" />
+                    <value name="pmu" number="11" />
+                    <value name="dclb" number="13" />
+                    <value name="swpSe1" number="14" />
+                    <value name="swpSe2" number="15" />
+                    <value name="unknown" number="998" />
+                    <value name="all" number="999" />
+                  </values>
+                </type>
+              </field>
+              <field name="level" type="ETraceLevels" optional="true">
+                <type name="ETraceLevels" type="enum">
+                  <values>
+                    <value name="coreDebug" number="0" />
+                    <value name="debug" number="1" />
+                    <value name="comments" number="2" />
+                    <value name="events" number="3" />
+                    <value name="data" number="4" />
+                    <value name="warning" number="5" />
+                    <value name="error" number="6" />
+                  </values>
+                </type>
+              </field>
+              <field name="channel" type="VisibleString" optional="true" ></field>
+              <field name="message" type="VisibleString" optional="true" ></field>
+              <field name="space" type="INTEGER" optional="true" ></field>
+              <field name="register" type="VisibleString" optional="true" ></field>
+              <field name="bitfield" type="VisibleString" optional="true" ></field>
+            </type>
+          </field>
+          <field name="timeStamp" type="TimeStampType" optional="true" ></field>
+          <field name="channels" type="Channels" optional="true">
+            <type name="Channels"></type>
+          </field>
+        </type>
+      </field>
+      <field name="mappingTrace" type="MemoryMappingTrace">
+        <type name="MemoryMappingTrace">
+          <field name="space" type="INTEGER"></field>
+          <field name="register" type="VisibleString"></field>
+          <field name="bitfield" type="VisibleString" optional="true" ></field>
+          <field name="startbit" type="INTEGER" optional="true" ></field>
+          <field name="stopbit" type="INTEGER" optional="true" ></field>
+          <field name="oldvalue" type="INTEGER" optional="true" ></field>
+          <field name="value" type="INTEGER"></field>
+        </type>
+      </field>
+    </field>
+  </type>
+</asn1>

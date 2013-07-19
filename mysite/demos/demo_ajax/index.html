@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<head> 
+<title>Ajax demo </title> 
+<script type="text/javascript"> 
+    var xmlhttp;  
+    xmlhttp=new XMLHttpRequest(); 
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {     
+            var jsonobj = JSON.parse(xmlhttp.responseText);       
+            msg = "";      
+            for (i in jsonobj) {       
+                msg += '<p>';       
+                msg += i + " : " + jsonobj[i];       
+                msg += '</p>';     }      
+        } else {     
+            msg = "<p> Request in progress , state = "+xmlhttp.readyState+"</p>";       
+            } 
+        document.getElementById("printZone").innerHTML += msg;    
+        }  
+    function requestJson() {
+        xmlhttp.open("GET", "/ajsonplease", true); 
+        xmlhttp.send(); 
+        }
+</script>
+</head>  
+<body>
+    <button onClick="requestJson()"> Get a Json </button>
+    <div id="printZone">...Place Holder... </div>
+</body> 
+</html>

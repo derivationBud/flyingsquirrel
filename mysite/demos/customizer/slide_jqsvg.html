@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <title>Slider controlled graph</title>
+  <style>
+  #bundle  span {height:300px; float:left; margin:15px; }
+  #valueBox     {width:100px; }
+  .value        {border: 0; color: #f6931f; font-weight: bold;}
+  .face         {fill: #ccc; stroke: #555; }
+  .frame        {fill: #eee; stroke: #888; }
+  svg           {stroke-width: 2;
+                 stroke-linecap: round;
+                 stroke-linejoin: round;
+                }
+  </style>
+  <!-- jquery -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <!-- Populate Control Box -->
+  <script>
+  $(function() {
+    $( "#controlBox > span" ).each(function() {
+
+      // read initial values from markup and remove that
+      var paramId  =             $( this ).attr('paramId')
+      var defVal   = parseFloat( $( this ).attr('defVal'))
+      var minVal   = parseFloat( $( this ).attr('minVal'))
+      var maxVal   = parseFloat( $( this ).attr('maxVal'))
+      var stepVal  = parseFloat( $( this ).attr('stepVal'))
+
+      // Create display for values
+      var viewVal = "<li> <label for=\""+paramId+"\">"+paramId+":</label>"
+      viewVal    += "<input size=\"5\" type=\"text\" id="+paramId+" class=\"value\" /></li>"
+      $("#valueBox").append(viewVal)
+
+      // Initialize display
+      $('#' + paramId).val( defVal )
+
+      // Inject slider
+      $( this ).empty().slider({ value: defVal, min: minVal, max: maxVal, step: stepVal,
+        animate: true,
+        orientation: "vertical",
+        slide: function( event, ui ) {
+            // Refresh displayed value on change
+            var paramId = $(event.target).attr("paramId")
+            $('#' + paramId).val( ui.value )
+            updateRender()
+            }
+      })
+    })
+  })
+  function updateRender() {
+      // replace pathes with executed expressions
+      $("[d_exp]").each(function(){ 
+          $(this).attr("d",eval($(this).attr("d_exp"))) 
+          })
+  }
+  // shortcut for d_exp
+  function p(x) { return( $('#'+x).val() ) }
+
+  $(document).ready(updateRender)
+
+  </script>
+</head>
+<body>
+  <p class="ui-state-default ui-corner-all" style="padding: 4px; margin-top: 4em;">
+  Shape it
+  </p>
+  <div id="bundle"> 
+    <span>
+      <div id="controlBox">
+
+        <!-- Duplicate and tune lines to get more parameters -->
+        <span paramId="W" stepVal="0.1" minVal="10" maxVal="50" defVal="40"/> PlaceHolder </span>
+        <span paramId="H" stepVal="0.1" minVal="10" maxVal="50" defVal="30"/> PlaceHolder </span>
+        <span paramId="D" stepVal="0.1" minVal="5"  maxVal="15" defVal="15"/> PlaceHolder </span>
+      </div>
+    </span>
+    <span> <div id="valueBox"> </div> </span>
+    <span>
+      <div id="viewBox" >
+      <svg id="frame" width="300" height="300">
+        <path class="frame" d="M 0 0 L 0 300 300 300 300 0 Z"/>
+
+        <!-- Set origin with lower-left corner margin, and flip to math-like coordinates -->
+        <g id="obj" width="300" height="300" transform="translate(30,270) scale(2,-2)"> 
+            <!-- Parametric drawing comes here -->
+            <path class="face" d_exp="['M 0 0 l',0,p('H'),p('W'),0,0,0-p('H'),'z'].join(' ')"/>
+            <path class="face" d_exp="['M',0,p('H'),'l',p('D'),p('D'),p('W'),0,0-p('D'),0-p('D'),0-p('W'),0,'z'].join(' ')"/>
+            <path class="face" d_exp="['M',p('W'),0,'l',p('D'),p('D'),0,p('H'),0-p('D'),0-p('D'),0,0-p('H'),'z'].join(' ')"/>
+        </g>
+      </svg>
+      </div> 
+    </span>
+  </div> 
+</body>
+</html>
+

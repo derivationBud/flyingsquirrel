@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="546">
+<author>sfievet</author>
+<date>2013-01-03T16:22:12.213748Z</date>
+<msg>-updated CEPRDT reset value to match RTL
+</msg>
+</logentry>
+<logentry
+   revision="543">
+<author>droubinet</author>
+<date>2013-01-02T16:10:27.740982Z</date>
+<msg>Better mime-type
+</msg>
+</logentry>
+<logentry
+   revision="542">
+<author>droubinet</author>
+<date>2013-01-02T16:07:55.307789Z</date>
+<msg>Uniquified GPIOs</msg>
+</logentry>
+<logentry
+   revision="541">
+<author>droubinet</author>
+<date>2013-01-02T16:02:48.437196Z</date>
+<msg>Align with recent doc</msg>
+</logentry>
+<logentry
+   revision="539">
+<author>droubinet</author>
+<date>2013-01-02T14:50:00.167950Z</date>
+<msg>Introducing Execution Modes</msg>
+</logentry>
+<logentry
+   revision="538">
+<author>droubinet</author>
+<date>2013-01-02T14:49:35.193196Z</date>
+<msg>More test-related registers</msg>
+</logentry>
+<logentry
+   revision="531">
+<author>creynaud</author>
+<date>2012-12-21T15:03:17.301769Z</date>
+<msg>Remove attribute resource="" from all xml files</msg>
+</logentry>
+<logentry
+   revision="530">
+<author>sfievet</author>
+<date>2012-12-20T16:56:44.113237Z</date>
+<msg>-added description for CE.RXIP and RW.RXIP
+</msg>
+</logentry>
+<logentry
+   revision="527">
+<author>creynaud</author>
+<date>2012-12-19T13:24:03.538572Z</date>
+<msg>Fix syntax error in SWP mapping</msg>
+</logentry>
+<logentry
+   revision="524">
+<author>creynaud</author>
+<date>2012-12-19T08:06:40.999061Z</date>
+<msg>Update of default values + Minor corrections to match memory mapping from excel file</msg>
+</logentry>
+<logentry
+   revision="521">
+<author>creynaud</author>
+<date>2012-12-18T15:30:33.942547Z</date>
+<msg>Add mime type </msg>
+</logentry>
+<logentry
+   revision="519">
+<author>creynaud</author>
+<date>2012-12-18T15:10:37.930999Z</date>
+<msg>Update mrv5 memory mapping according to https://edm.insidefr.com/share/proxy/alfresco/api/node/content/workspace/SpacesStore/47f720ed-c1b3-4abb-b941-aaa10927d40c/Mrv5_memory_map.xlsx?a=true </msg>
+</logentry>
+<logentry
+   revision="512">
+<author>creynaud</author>
+<date>2012-12-17T09:55:46.656573Z</date>
+<msg>Minor updates on card detect mapping</msg>
+</logentry>
+<logentry
+   revision="511">
+<author>creynaud</author>
+<date>2012-12-17T09:54:55.684376Z</date>
+<msg>Minor updates on TX mapping</msg>
+</logentry>
+<logentry
+   revision="510">
+<author>creynaud</author>
+<date>2012-12-17T09:53:14.825494Z</date>
+<msg>Update description of SPI config registers</msg>
+</logentry>
+<logentry
+   revision="508">
+<author>creynaud</author>
+<date>2012-12-14T14:48:20.044198Z</date>
+<msg>Update Card detect memory mapping according to document https://edm.insidefr.com/share/proxy/alfresco/api/node/content/workspace/SpacesStore/4680cff1-d814-431f-86ec-5275d3e63095/HDS_DEV_1210-300%20Card%20Detect?a=true </msg>
+</logentry>
+<logentry
+   revision="503">
+<author>sfievet</author>
+<date>2012-12-12T14:46:43.017497Z</date>
+<msg>-added some space between SWR and CE regs to provision further possible registers addition
+
+</msg>
+</logentry>
+<logentry
+   revision="502">
+<author>sfievet</author>
+<date>2012-12-12T14:08:02.145484Z</date>
+<msg>-added SWRNOISE register to control the noise estimator
+-shifted the address offsets accordingly
+</msg>
+</logentry>
+<logentry
+   revision="501">
+<author>droubinet</author>
+<date>2012-12-12T13:22:19.918944Z</date>
+<msg>Non-significant change to trig fisheye server</msg>
+</logentry>
+<logentry
+   revision="497">
+<author>creynaud</author>
+<date>2012-12-12T09:46:01.961433Z</date>
+<msg>Remove register gap in PIPELINE</msg>
+</logentry>
+<logentry
+   revision="493">
+<author>creynaud</author>
+<date>2012-12-11T12:43:41.915276Z</date>
+<msg>add VField high and low status bits</msg>
+</logentry>
+<logentry
+   revision="487">
+<author>creynaud</author>
+<date>2012-12-10T10:51:50.003878Z</date>
+<msg>Fix wrong name for CLR_ERR bitfield </msg>
+</logentry>
+<logentry
+   revision="482">
+<author>creynaud</author>
+<date>2012-12-10T09:52:49.520304Z</date>
+<msg>Add CLR_ERR bit in CR register</msg>
+</logentry>
+<logentry
+   revision="474">
+<author>creynaud</author>
+<date>2012-12-03T15:38:12.556945Z</date>
+<msg>Add OTP_SR default value and resize WAIT_COUNT bitfield</msg>
+</logentry>
+<logentry
+   revision="473">
+<author>sfievet</author>
+<date>2012-12-03T15:10:58.931625Z</date>
+<msg>-fixed minor typo
+</msg>
+</logentry>
+<logentry
+   revision="472">
+<author>sfievet</author>
+<date>2012-12-03T15:10:22.550159Z</date>
+<msg>-changed CECRCVAL and RWCRCVAL access mode to RO
+-added reset values for CRCINI{A,B,C,15}
+-added dummy bitfield to all *CRC register to improve readability
+-fixed a couple of indentions
+-formated CECRCVAL description field
+</msg>
+</logentry>
+<logentry
+   revision="468">
+<author>creynaud</author>
+<date>2012-11-29T14:11:14.832536Z</date>
+<msg>Fix some bifields position errors</msg>
+</logentry>
+<logentry
+   revision="467">
+<author>creynaud</author>
+<date>2012-11-29T14:06:32.390691Z</date>
+<msg>Fix syntax errors</msg>
+</logentry>
+<logentry
+   revision="464">
+<author>creynaud</author>
+<date>2012-11-27T12:40:41.238896Z</date>
+<msg>Update PMU mapping according to last versions of documents</msg>
+</logentry>
+<logentry
+   revision="458">
+<author>creynaud</author>
+<date>2012-11-20T17:09:26.731573Z</date>
+<msg>Update offsets of PIPE registers</msg>
+</logentry>
+<logentry
+   revision="457">
+<author>creynaud</author>
+<date>2012-11-20T16:39:04.662462Z</date>
+<msg>update OTP memory mapping according to new version of specs. </msg>
+</logentry>
+<logentry
+   revision="455">
+<author>sfievet</author>
+<date>2012-11-20T13:34:21.500366Z</date>
+<msg>-updated register map to sync up with pipeline spec v0.9.2
+-added fancy formating (thanks David!)
+</msg>
+</logentry>
+<logentry
+   revision="452">
+<author>sfievet</author>
+<date>2012-11-15T13:19:43.676708Z</date>
+<msg>-started to add formating to the description sections
+-fixed typo in CEPRDT functional description
+</msg>
+</logentry>
+<logentry
+   revision="449">
+<author>creynaud</author>
+<date>2012-11-15T11:06:37.619621Z</date>
+<msg>Fix syntax error</msg>
+</logentry>
+<logentry
+   revision="446">
+<author>creynaud</author>
+<date>2012-11-15T09:30:18.558083Z</date>
+<msg>Update memory mapping from various information sources</msg>
+</logentry>
+<logentry
+   revision="438">
+<author>droubinet</author>
+<date>2012-11-12T17:28:39.452820Z</date>
+<msg>Propagate none-16-bits register handling</msg>
+</logentry>
+<logentry
+   revision="433">
+<author>droubinet</author>
+<date>2012-11-12T15:43:17.841366Z</date>
+<msg>Better Address Space Separation</msg>
+</logentry>
+<logentry
+   revision="431">
+<author>sfievet</author>
+<date>2012-11-12T14:08:34.811346Z</date>
+<msg>-fixed misleading comment in ROUTING register
+</msg>
+</logentry>
+<logentry
+   revision="422">
+<author>droubinet</author>
+<date>2012-11-09T13:55:48.291397Z</date>
+<msg>Better mime-type</msg>
+</logentry>
+<logentry
+   revision="417">
+<author>creynaud</author>
+<date>2012-11-09T12:56:47.591796Z</date>
+<msg>Add format version attribute in SYS </msg>
+</logentry>
+<logentry
+   revision="412">
+<author>creynaud</author>
+<date>2012-11-09T11:15:28.856881Z</date>
+<msg>Reset memory spaces definition</msg>
+</logentry>
+<logentry
+   revision="408">
+<author>creynaud</author>
+<date>2012-11-09T10:58:55.735116Z</date>
+<msg>Remove memory spaces definition (pb with xsd)</msg>
+</logentry>
+<logentry
+   revision="405">
+<author>creynaud</author>
+<date>2012-11-09T10:54:52.402045Z</date>
+<msg>Reset memory spaces definition</msg>
+</logentry>
+<logentry
+   revision="401">
+<author>creynaud</author>
+<date>2012-11-09T08:06:17.377806Z</date>
+<msg>Fix syntax error in comments</msg>
+</logentry>
+<logentry
+   revision="399">
+<author>creynaud</author>
+<date>2012-11-09T07:54:49.854887Z</date>
+<msg>Remove memory spaces definition (pb with xsd)</msg>
+</logentry>
+<logentry
+   revision="397">
+<author>creynaud</author>
+<date>2012-11-09T07:40:10.983293Z</date>
+<msg>Fix registers overlap in SWR </msg>
+</logentry>
+<logentry
+   revision="389">
+<author>sfievet</author>
+<date>2012-11-08T12:50:47.787494Z</date>
+<msg>-removed CEBYTE.RXFBLEN control field as it's currently unused
+</msg>
+</logentry>
+<logentry
+   revision="388">
+<author>sfievet</author>
+<date>2012-11-08T11:15:35.824433Z</date>
+<msg>-fixed bad offset address for RWFDT register
+</msg>
+</logentry>
+<logentry
+   revision="386">
+<author>creynaud</author>
+<date>2012-11-08T10:36:59.966828Z</date>
+<msg>Fix some format bugs and change SYS base address</msg>
+</logentry>
+<logentry
+   revision="383">
+<author>creynaud</author>
+<date>2012-11-07T15:55:49.205012Z</date>
+<msg>Remove SWP_SUPPLY register</msg>
+</logentry>
+<logentry
+   revision="380">
+<author>creynaud</author>
+<date>2012-11-07T15:35:33.897669Z</date>
+<msg>Update mrv5 memory mapping accordig to MRV5_RegBank_V5.0.xlsx</msg>
+</logentry>
+<logentry
+   revision="377">
+<author>creynaud</author>
+<date>2012-11-06T15:36:23.963832Z</date>
+<msg>Split ISO 7816 64 bytes buffer into 2 32 bytes buffers</msg>
+</logentry>
+<logentry
+   revision="376">
+<author>gronchet</author>
+<date>2012-11-06T15:01:30.139341Z</date>
+<msg>update OTP mapping (updated specification)</msg>
+</logentry>
+<logentry
+   revision="374">
+<author>creynaud</author>
+<date>2012-11-06T09:35:28.074862Z</date>
+<msg>Update memory mapping according to MRV5_RegBank version 0.1 in alfresco</msg>
+</logentry>
+<logentry
+   revision="373">
+<author>gronchet</author>
+<date>2012-11-06T08:09:52.250020Z</date>
+<msg>add clock frequency values</msg>
+</logentry>
+<logentry
+   revision="371">
+<author>sfievet</author>
+<date>2012-11-05T14:24:25.959249Z</date>
+<msg>-updated protocol detection description to reflect actual design
+</msg>
+</logentry>
+<logentry
+   revision="369">
+<author>droubinet</author>
+<date>2012-10-30T16:08:07.611174Z</date>
+<msg>Documenting unit of size</msg>
+</logentry>
+<logentry
+   revision="365">
+<author>droubinet</author>
+<date>2012-10-26T12:34:11.900806Z</date>
+<msg>Better html generation with more &lt;description&gt; node displayed</msg>
+</logentry>
+<logentry
+   revision="362">
+<author>creynaud</author>
+<date>2012-10-26T06:08:21.339418Z</date>
+<msg>Fix wrong label. Labels are used to generate defines.</msg>
+</logentry>
+<logentry
+   revision="360">
+<author>droubinet</author>
+<date>2012-10-25T15:43:36.566030Z</date>
+<msg></msg>
+</logentry>
+<logentry
+   revision="353">
+<author>creynaud</author>
+<date>2012-10-22T15:10:12.252044Z</date>
+<msg>Add default values for CEBITX SWR regiters</msg>
+</logentry>
+<logentry
+   revision="351">
+<author>droubinet</author>
+<date>2012-10-19T14:44:12.649539Z</date>
+<msg>Protocol-Detect FW Selection limited to 2 bits</msg>
+</logentry>
+<logentry
+   revision="348">
+<author>creynaud</author>
+<date>2012-10-18T07:14:50.808740Z</date>
+<msg>Update RNG IP</msg>
+</logentry>
+<logentry
+   revision="347">
+<author>creynaud</author>
+<date>2012-10-18T07:14:35.281232Z</date>
+<msg>Add TVAL and TVAL 2 registers - Update ILAT register</msg>
+</logentry>
+<logentry
+   revision="332">
+<author>creynaud</author>
+<date>2012-10-10T15:37:17.236857Z</date>
+<msg>Final µAdvX memory mapping</msg>
+</logentry>
+<logentry
+   revision="329">
+<author>droubinet</author>
+<date>2012-10-10T14:57:29.278718Z</date>
+<msg>label syntax compliance</msg>
+</logentry>
+<logentry
+   revision="326">
+<author>gronchet</author>
+<date>2012-10-10T14:03:49.012117Z</date>
+<msg>correction of naming: togenerate correctly the autoheaders for single IPs (MISC and PADS)</msg>
+</logentry>
+<logentry
+   revision="322">
+<author>droubinet</author>
+<date>2012-10-09T15:02:09.117634Z</date>
+<msg>XML syntax</msg>
+</logentry>
+<logentry
+   revision="314">
+<author>droubinet</author>
+<date>2012-10-08T09:54:23.456952Z</date>
+<msg>Fixing addresses</msg>
+</logentry>
+<logentry
+   revision="313">
+<author>droubinet</author>
+<date>2012-10-08T09:51:12.662492Z</date>
+<msg>Fixing addresses</msg>
+</logentry>
+<logentry
+   revision="312">
+<author>droubinet</author>
+<date>2012-10-08T09:47:17.159457Z</date>
+<msg>Better mime type</msg>
+</logentry>
+<logentry
+   revision="311">
+<author>droubinet</author>
+<date>2012-10-08T09:12:41.052673Z</date>
+<msg>Update from Seb Fievet</msg>
+</logentry>
+<logentry
+   revision="309">
+<author>droubinet</author>
+<date>2012-10-05T16:05:27.229522Z</date>
+<msg>Better mime-type</msg>
+</logentry>
+<logentry
+   revision="308">
+<author>droubinet</author>
+<date>2012-10-05T16:00:46.360241Z</date>
+<msg>attribute size means now number of bits for registers</msg>
+</logentry>
+<logentry
+   revision="307">
+<author>droubinet</author>
+<date>2012-10-05T15:25:04.986726Z</date>
+<msg>RADIO vs PIPE split</msg>
+</logentry>
+<logentry
+   revision="303">
+<author>creynaud</author>
+<date>2012-10-04T13:50:37.736029Z</date>
+<msg>remove invalid attributes</msg>
+</logentry>
+<logentry
+   revision="300">
+<author>creynaud</author>
+<date>2012-10-04T12:43:02.999832Z</date>
+<msg>Change a register label for RADIO IP</msg>
+</logentry>
+<logentry
+   revision="290">
+<author>creynaud</author>
+<date>2012-10-03T15:00:30.303649Z</date>
+<msg>Add registers PIPELIMIT 0/1 in RADIO memory mapping</msg>
+</logentry>
+<logentry
+   revision="287">
+<author>creynaud</author>
+<date>2012-10-03T12:14:28.860672Z</date>
+<msg>[PLSPDK-180] resize µAdvx RAM buffer to 2Kb</msg>
+</logentry>
+<logentry
+   revision="286">
+<author>gronchet</author>
+<date>2012-10-03T08:49:48.473859Z</date>
+<msg>correct some register's default values</msg>
+</logentry>
+<logentry
+   revision="285">
+<author>creynaud</author>
+<date>2012-10-03T07:49:12.655343Z</date>
+<msg>Fix some bugs in OTP memory mapping</msg>
+</logentry>
+<logentry
+   revision="283">
+<author>creynaud</author>
+<date>2012-10-03T07:29:10.986497Z</date>
+<msg>[PLSPDK-181] change some labels and add some bitfield values in µAdvX</msg>
+</logentry>
+<logentry
+   revision="280">
+<author>gronchet</author>
+<date>2012-10-02T12:44:15.014587Z</date>
+<msg>add details and correction obtained from design</msg>
+</logentry>
+<logentry
+   revision="277">
+<author>creynaud</author>
+<date>2012-10-02T06:23:32.506161Z</date>
+<msg>Update register offset adresses due to new size of RAM buffer</msg>
+</logentry>
+<logentry
+   revision="274">
+<author>creynaud</author>
+<date>2012-10-02T05:58:56.957374Z</date>
+<msg>Update size of µAdvX RAM</msg>
+</logentry>
+<logentry
+   revision="272">
+<author>creynaud</author>
+<date>2012-10-01T16:04:01.589268Z</date>
+<msg>Add Pipeline buffers</msg>
+</logentry>
+<logentry
+   revision="269">
+<author>droubinet</author>
+<date>2012-10-01T14:13:52.144087Z</date>
+<msg>Better bit position attributes</msg>
+</logentry>
+<logentry
+   revision="268">
+<author>droubinet</author>
+<date>2012-10-01T14:13:12.508150Z</date>
+<msg>Removal of forbidden charactes greater than</msg>
+</logentry>
+<logentry
+   revision="266">
+<author>gronchet</author>
+<date>2012-10-01T13:58:44.950479Z</date>
+<msg>"specification error" correction on TX_PLL_SEL register</msg>
+</logentry>
+<logentry
+   revision="263">
+<author>creynaud</author>
+<date>2012-10-01T12:14:27.999819Z</date>
+<msg>Add OTP memory mapping</msg>
+</logentry>
+<logentry
+   revision="258">
+<author>creynaud</author>
+<date>2012-09-28T13:12:28.507505Z</date>
+<msg>Fix bug :duplicate ID for Busy access mode of CR register in µAdvX</msg>
+</logentry>
+<logentry
+   revision="255">
+<author>cdutrieux</author>
+<date>2012-09-27T08:00:57.336322Z</date>
+<msg>A few cleanup after validation against XSD scheme.</msg>
+</logentry>
+<logentry
+   revision="254">
+<author>creynaud</author>
+<date>2012-09-27T05:46:24.513490Z</date>
+<msg>Update offsets of Dummy registers in SWP</msg>
+</logentry>
+<logentry
+   revision="253">
+<author>droubinet</author>
+<date>2012-09-26T14:20:41.035247Z</date>
+<msg>Addresses are ++2</msg>
+</logentry>
+<logentry
+   revision="252">
+<author>droubinet</author>
+<date>2012-09-26T14:12:42.355064Z</date>
+<msg>Banked registers have separate addresses</msg>
+</logentry>
+<logentry
+   revision="249">
+<author>creynaud</author>
+<date>2012-09-26T13:19:36.822988Z</date>
+<msg>update SWP memory mapping with SYS register</msg>
+</logentry>
+<logentry
+   revision="248">
+<author>droubinet</author>
+<date>2012-09-26T13:02:24.898238Z</date>
+<msg>Import from Office-type spec</msg>
+</logentry>
+<logentry
+   revision="245">
+<author>creynaud</author>
+<date>2012-09-25T12:51:25.139070Z</date>
+<msg>Move default value attribute from AccessMode node to Register node</msg>
+</logentry>
+<logentry
+   revision="244">
+<author>gronchet</author>
+<date>2012-09-25T12:49:32.066754Z</date>
+<msg>update default values at reset</msg>
+</logentry>
+<logentry
+   revision="243">
+<author>creynaud</author>
+<date>2012-09-25T12:47:33.560100Z</date>
+<msg>Fix: move of default value attribute from AccessMode to Register</msg>
+</logentry>
+<logentry
+   revision="241">
+<author>creynaud</author>
+<date>2012-09-25T11:39:54.594807Z</date>
+<msg>remove deprecated xsd files</msg>
+</logentry>
+<logentry
+   revision="238">
+<author>gronchet</author>
+<date>2012-09-24T09:57:05.242615Z</date>
+<msg>update Rx mapping: RXDTEST register is remapped to address 0xF0488</msg>
+</logentry>
+<logentry
+   revision="226">
+<author>creynaud</author>
+<date>2012-09-20T10:12:19.935093Z</date>
+<msg>remove modifications of revision 214 </msg>
+</logentry>
+<logentry
+   revision="223">
+<author>creynaud</author>
+<date>2012-09-20T09:51:36.909210Z</date>
+<msg>remove modifications of revision 214 </msg>
+</logentry>
+<logentry
+   revision="222">
+<author>creynaud</author>
+<date>2012-09-20T09:39:13.035313Z</date>
+<msg>Update mrv5 memory mapping </msg>
+</logentry>
+<logentry
+   revision="218">
+<author>droubinet</author>
+<date>2012-09-19T15:19:26.083369Z</date>
+<msg>Better mime-type</msg>
+</logentry>
+<logentry
+   revision="214">
+<author>droubinet</author>
+<date>2012-09-19T15:02:56.097172Z</date>
+<msg>Better Address Space</msg>
+</logentry>
+<logentry
+   revision="210">
+<author>creynaud</author>
+<date>2012-09-19T12:14:41.565807Z</date>
+<msg>Add formatVersion attribute and CARDDET memory mapping</msg>
+</logentry>
+<logentry
+   revision="202">
+<author>creynaud</author>
+<date>2012-09-19T09:33:04.158499Z</date>
+<msg>Add ILAT hardware register description</msg>
+</logentry>
+<logentry
+   revision="199">
+<author>creynaud</author>
+<date>2012-09-19T08:40:18.917138Z</date>
+<msg>Add bit field values for CRC_SKIP in PCDCFG1</msg>
+</logentry>
+<logentry
+   revision="195">
+<author>creynaud</author>
+<date>2012-09-19T06:34:14.035567Z</date>
+<msg>Fix syntax error in baudrate in PCDBIT registers</msg>
+</logentry>
+<logentry
+   revision="192">
+<author>creynaud</author>
+<date>2012-09-19T05:58:53.295235Z</date>
+<msg>Add bitfield values for PCDBIT registers</msg>
+</logentry>
+<logentry
+   revision="186">
+<author>creynaud</author>
+<date>2012-09-18T09:20:49.177213Z</date>
+<msg>Update memory spaces directly with their values defines in PDK</msg>
+</logentry>
+<logentry
+   revision="185">
+<author>creynaud</author>
+<date>2012-09-18T06:08:30.063897Z</date>
+<msg>Add TIOCT description in memory mapping</msg>
+</logentry>
+<logentry
+   revision="180">
+<author>droubinet</author>
+<date>2012-09-14T15:18:43.696044Z</date>
+<msg>Removing css dependencies</msg>
+</logentry>
+<logentry
+   revision="167">
+<author>droubinet</author>
+<date>2012-09-14T14:47:33.841349Z</date>
+<msg>xsl work-around</msg>
+</logentry>
+<logentry
+   revision="166">
+<author>droubinet</author>
+<date>2012-09-14T14:44:28.381908Z</date>
+<msg>Better style</msg>
+</logentry>
+<logentry
+   revision="153">
+<author>creynaud</author>
+<date>2012-09-14T08:00:42.241643Z</date>
+<msg>Merge CLK,CMU and PMU modifications done in mrv5tc</msg>
+</logentry>
+<logentry
+   revision="149">
+<author>creynaud</author>
+<date>2012-09-13T12:25:14.069470Z</date>
+<msg>Add labels for all memory mappings</msg>
+</logentry>
+<logentry
+   revision="140">
+<author>creynaud</author>
+<date>2012-09-12T11:42:26.155422Z</date>
+<msg>Modify MISC register label</msg>
+</logentry>
+<logentry
+   revision="128">
+<author>creynaud</author>
+<date>2012-09-11T12:06:08.598150Z</date>
+<msg>Add mime types for browser display</msg>
+</logentry>
+<logentry
+   revision="127">
+<author>creynaud</author>
+<date>2012-09-11T11:54:21.761548Z</date>
+<msg>Add mime types for browser display</msg>
+</logentry>
+<logentry
+   revision="123">
+<author>creynaud</author>
+<date>2012-09-07T11:21:03.182233Z</date>
+<msg>Add RAM buffer in µAdvX</msg>
+</logentry>
+<logentry
+   revision="115">
+<author>creynaud</author>
+<date>2012-09-06T11:01:49.207807Z</date>
+<msg>Add EMIFIFOEN bit field in register PIPEALERT</msg>
+</logentry>
+<logentry
+   revision="113">
+<author>creynaud</author>
+<date>2012-09-06T09:41:08.980498Z</date>
+<msg>Add TRANS flag in PIPESTATUS register</msg>
+</logentry>
+<logentry
+   revision="105">
+<author>creynaud</author>
+<date>2012-09-06T07:29:54.766806Z</date>
+<msg>Add buffers on PIPELINE for RADIO PIC and PCD</msg>
+</logentry>
+<logentry
+   revision="103">
+<author>creynaud</author>
+<date>2012-09-05T15:47:43.504503Z</date>
+<msg>Fix syntax error in xml RADIO file</msg>
+</logentry>
+<logentry
+   revision="101">
+<author>creynaud</author>
+<date>2012-09-05T15:37:41.330975Z</date>
+<msg>Add Protocol detect Lock in Protocol detect register and some bit field values</msg>
+</logentry>
+<logentry
+   revision="99">
+<author>creynaud</author>
+<date>2012-09-05T11:41:59.447718Z</date>
+<msg>Some precisions on header length bit field</msg>
+</logentry>
+<logentry
+   revision="98">
+<author>creynaud</author>
+<date>2012-09-05T11:29:23.838669Z</date>
+<msg>Add bit field values for frame config and bit config</msg>
+</logentry>
+<logentry
+   revision="93">
+<author>creynaud</author>
+<date>2012-09-04T12:21:26.829079Z</date>
+<msg>Update offsets for Radio mapping</msg>
+</logentry>
+<logentry
+   revision="91">
+<author>creynaud</author>
+<date>2012-09-04T11:59:58.836655Z</date>
+<msg>Update base addresses to avoid overlap</msg>
+</logentry>
+<logentry
+   revision="87">
+<author>creynaud</author>
+<date>2012-08-31T13:07:54.435756Z</date>
+<msg>Fix xsd constraints not satisfied</msg>
+</logentry>
+<logentry
+   revision="86">
+<author>creynaud</author>
+<date>2012-08-30T12:20:37.321283Z</date>
+<msg>Add ISO7816 and I2C in MRV5</msg>
+</logentry>
+<logentry
+   revision="84">
+<author>creynaud</author>
+<date>2012-08-30T09:03:25.067121Z</date>
+<msg>Change some bit field names in Micro AdvX</msg>
+</logentry>
+<logentry
+   revision="83">
+<author>creynaud</author>
+<date>2012-08-30T08:57:55.703693Z</date>
+<msg>Set name of Micro Advx equal to Label </msg>
+</logentry>
+<logentry
+   revision="81">
+<author>creynaud</author>
+<date>2012-08-30T08:47:34.948215Z</date>
+<msg>Update Micro AdvX memory mapping</msg>
+</logentry>
+<logentry
+   revision="80">
+<author>creynaud</author>
+<date>2012-08-30T07:42:34.206575Z</date>
+<msg>Some modifications in Micro Advx memory mapping
+Changes in xsl file</msg>
+</logentry>
+<logentry
+   revision="73">
+<author>creynaud</author>
+<date>2012-08-30T05:54:20.577918Z</date>
+<msg>Add MicroReav V5 memory mapping
+</msg>
+</logentry>
+</log>

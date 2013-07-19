@@ -1,0 +1,334 @@
+{"name":"asn" , "optional" : false , "children" : [ 
+  { "name": "present" , "optional" : false , "children" : [ 
+   { "name": "(0)ToolsPDUs_PR_NOTHING" } , 
+   { "name": "(1)ToolsPDUs_PR_DataExchange" } , 
+   { "name": "(2)ToolsPDUs_PR_DebugCommand" } , 
+   { "name": "(3)ToolsPDUs_PR_SimulationEvent" } , 
+   { "name": "(4)ToolsPDUs_PR_RFCommand" } , 
+   { "name": "(5)ToolsPDUs_PR_ResourceCommand" } , 
+   { "name": "(6)ToolsPDUs_PR_CodeCoverageCommand" } , 
+   { "name": "(7)ToolsPDUs_PR_CommandError" } , 
+   { "name": "(8)ToolsPDUs_PR_PMUCommand" } , 
+   { "name": "(9)ToolsPDUs_PR_TimeStampType" } , 
+   { "name": "(10)ToolsPDUs_PR_TimeOut" } , 
+   { "name": "(11)ToolsPDUs_PR_EmulatorCommand" } , 
+   { "name": "(12)ToolsPDUs_PR_GroupedPDUs" } , 
+   { "name": "(13)ToolsPDUs_PR_RisenEvent" } , 
+   { "name": "(14)ToolsPDUs_PR_MemoryMapping" } , 
+   { "name": "(15)ToolsPDUs_PR_TraceCommand" } 
+  ]} , 
+  { "name": "choice" , "optional" : false , "children" : [ 
+    { "name": "dataExchange" , "optional" : false , "children" : [ 
+      { "name": "srcPeripheralId" , "optional" : false , "children" : [ { "name" : "EPeripheralIds"}]} , 
+      { "name": "dstPeripheralId" , "optional" : false , "children" : [ { "name" : "EPeripheralIds"}]} , 
+      { "name": "dataCommand" , "optional" : false , "children" : [ 
+        { "name": "present" , "optional" : false , "children" : [ 
+         { "name": "(0)DataCommand_PR_NOTHING" } , 
+         { "name": "(1)DataCommand_PR_SendData" } , 
+         { "name": "(2)DataCommand_PR_ResponseData" } 
+        ]} , 
+        { "name": "choice" , "optional" : false , "children" : [ 
+          { "name": "sendata" , "optional" : false , "children" : [ 
+            { "name": "data" , "optional" : false , "children" : [ { "name" : "OCTET STRING"}]} , 
+            { "name": "bitCount" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "startBitCount" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "collisionBit" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "fblen" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "lblen" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "expectedResponse" , "optional" : true , "children" : [ { "name" : "OCTET STRING"}]} , 
+            { "name": "timeout" , "optional" : true , "children" : [ 
+              { "name": "id" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+              { "name": "fraction" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+              { "name": "seconds" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+              { "name": "timestamp" , "optional" : true , "children" : [ 
+                { "name": "fraction" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+                { "name": "seconds" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+                { "name": "id" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+                { "name": "type" , "optional" : false , "children" : [ { "name" : "TimeStampKind"}]} , 
+                { "name": "timeReferenceId" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+                { "name": "eventToTrigg" , "optional" : false , "children" : [ 
+                  { "name": "present" , "optional" : false , "children" : [ 
+                   { "name": "(0)AllEvents_PR_NOTHING" } , 
+                   { "name": "(1)AllEvents_PR_EDebugEvents" } , 
+                   { "name": "(2)AllEvents_PR_EDataExchangeEvents" } 
+                  ]} , 
+                  { "name": "choice" , "optional" : false , "children" : [ 
+                    { "name": "debugEvent" , "optional" : false , "children" : [ { "name" : "EDebugEvents"}]} , 
+                    { "name": "dataExchangeEvent" , "optional" : false , "children" : [ { "name" : "EDataExchangeEvents"}]} , 
+                    { "name": "swpEvent" , "optional" : false , "children" : [ { "name" : "ESWPEvents"}]} 
+                  ]} 
+                ]} 
+              ]} 
+            ]} 
+          ]} , 
+          { "name": "responseData" , "optional" : false , "children" : [ 
+            { "name": "status" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "error" , "optional" : false , "children" : [ 
+              { "name": "code" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+              { "name": "message" , "optional" : false , "children" : [ { "name" : "VisibleString"}]} 
+            ]} , 
+            { "name": "data" , "optional" : true , "children" : [ { "name" : "OCTET STRING"}]} , 
+            { "name": "bitCount" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "startBitCount" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "collisionBit" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "fblen" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "lblen" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} 
+          ]} , 
+          { "name": "waitData" , "optional" : false , "children" : [ 
+            { "name": "expectedData" , "optional" : false , "children" : [ { "name" : "OCTET STRING"}]} , 
+            { "name": "bitCount" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "startBitCount" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "collisionBit" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "fblen" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "lblen" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "timeout" , "optional" : true , "children" : [ { "name" : "TimeOut"}]} 
+          ]} 
+        ]} 
+      ]} , 
+      { "name": "timestamp" , "optional" : true , "children" : [ { "name" : "TimeStampType"}]} , 
+      { "name": "protocolInformations" , "optional" : true , "children" : [ 
+        { "name": "present" , "optional" : false , "children" : [ 
+         { "name": "(0)ProtocolInfo_PR_NOTHING" } , 
+         { "name": "(1)ProtocolInfo_PR_RFProtocol" } , 
+         { "name": "(2)ProtocolInfo_PR_I2CProtocol" } , 
+         { "name": "(3)ProtocolInfo_PR_SPIProtocol" } , 
+         { "name": "(4)ProtocolInfo_PR_SWPProtocol" } 
+        ]} , 
+        { "name": "choice" , "optional" : false , "children" : [ 
+          { "name": "rf" , "optional" : false , "children" : [ 
+            { "name": "standard" , "optional" : false , "children" : [ { "name" : "ERFProtocols"}]} , 
+            { "name": "bitRate" , "optional" : false , "children" : [ { "name" : "EBitRates"}]} , 
+            { "name": "frameConfig" , "optional" : true , "children" : [ 
+              { "name": "parity" , "optional" : false , "children" : [ { "name" : "Parity"}]} , 
+              { "name": "startBit" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+              { "name": "stopBit" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+              { "name": "sof" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+              { "name": "eof" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+              { "name": "oneFrmPerByte" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+              { "name": "crc" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+              { "name": "invCrc" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} 
+            ]} 
+          ]} , 
+          { "name": "i2c" , "optional" : false , "children" : [ 
+            { "name": "addressSize" , "optional" : false , "children" : [ { "name" : "EI2CAddressSize"}]} , 
+            { "name": "addressI2C" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "bitRate" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "lenOn2bytes" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+            { "name": "lenOn" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+            { "name": "lrcOn" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} 
+          ]} , 
+          { "name": "spi" , "optional" : false , "children" : [ 
+            { "name": "mode" , "optional" : false , "children" : [ { "name" : "SPIMode"}]} , 
+            { "name": "bitRate" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "lsbfe" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+            { "name": "lenOn" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+            { "name": "lrcOn" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+            { "name": "cpol" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+            { "name": "cpha" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+            { "name": "irqMode" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} 
+          ]} , 
+          { "name": "swp" , "optional" : false , "children" : [ 
+            { "name": "bitRate" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} 
+          ]} , 
+          { "name": "iso7816" , "optional" : false , "children" : [ 
+            { "name": "bitRate" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "convention" , "optional" : false , "children" : [ { "name" : "Convention"}]} , 
+            { "name": "revio" , "optional" : false , "children" : [ { "name" : "RevIO"}]} , 
+            { "name": "pcrre" , "optional" : true , "children" : [ { "name" : "BOOLEAN"}]} , 
+            { "name": "pctre" , "optional" : true , "children" : [ { "name" : "BOOLEAN"}]} 
+          ]} 
+        ]} 
+      ]} 
+    ]} , 
+    { "name": "debugCommand" , "optional" : false , "children" : [ 
+      { "name": "command" , "optional" : false , "children" : [ { "name" : "EDebugCommands"}]} , 
+      { "name": "parameters" , "optional" : true , "children" : [ 
+        { "name": "present" , "optional" : false , "children" : [ 
+         { "name": "(0)Parameters_PR_NOTHING" } , 
+         { "name": "(1)Parameters_PR_RunParameters" } , 
+         { "name": "(2)Parameters_PR_BreakAtAddressParameters" } , 
+         { "name": "(3)Parameters_PR_BreakAtTimeParameters" } , 
+         { "name": "(4)Parameters_PR_GetSetParameters" } 
+        ]} , 
+        { "name": "choice" , "optional" : false , "children" : [ 
+          { "name": "runParams" , "optional" : false , "children" : [ 
+            { "name": "time" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "unit" , "optional" : false , "children" : [ { "name" : "TimeUnit"}]} 
+          ]} , 
+          { "name": "breakAtAddressParams" , "optional" : false , "children" : [ 
+            { "name": "address" , "optional" : false , "children" : [ { "name" : "ADDRESS20BITS"}]} , 
+            { "name": "hitcount" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} 
+          ]} , 
+          { "name": "breakAtTimeParams" , "optional" : false , "children" : [ 
+            { "name": "time" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} 
+          ]} , 
+          { "name": "getsetParams" , "optional" : false , "children" : [ 
+            { "name": "space" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "address" , "optional" : false , "children" : [ { "name" : "ADDRESS20BITS"}]} , 
+            { "name": "data" , "optional" : true , "children" : [ { "name" : "OCTET STRING"}]} , 
+            { "name": "value" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} 
+          ]} , 
+          { "name": "loadCodeParams" , "optional" : false , "children" : [ 
+            { "name": "fileName" , "optional" : false , "children" : [ { "name" : "VisibleString"}]} , 
+            { "name": "fileFormat" , "optional" : false , "children" : [ { "name" : "EFileFormat"}]} , 
+            { "name": "fileSize" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "addressStart" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} 
+          ]} 
+        ]} 
+      ]} , 
+      { "name": "timeStamp" , "optional" : true , "children" : [ { "name" : "TimeStampType"}]} 
+    ]} , 
+    { "name": "simulationEvent" , "optional" : false , "children" : [ 
+      { "name": "event" , "optional" : false , "children" : [ { "name" : "EDebugEvents"}]} , 
+      { "name": "timestamp" , "optional" : true , "children" : [ { "name" : "TimeStampType"}]} 
+    ]} , 
+    { "name": "rfCommand" , "optional" : false , "children" : [ 
+      { "name": "command" , "optional" : false , "children" : [ { "name" : "ERFCommands"}]} , 
+      { "name": "timestamp" , "optional" : true , "children" : [ { "name" : "TimeStampType"}]} 
+    ]} , 
+    { "name": "resourceCommand" , "optional" : false , "children" : [ 
+      { "name": "present" , "optional" : false , "children" : [ 
+       { "name": "(0)ResourceCommand_PR_NOTHING" } , 
+       { "name": "(1)ResourceCommand_PR_GetResourceInfo" } , 
+       { "name": "(2)ResourceCommand_PR_GetPeripheralInfo" } , 
+       { "name": "(3)ResourceCommand_PR_GetModuleInfo" } , 
+       { "name": "(4)ResourceCommand_PR_GetInfo" } 
+      ]} , 
+      { "name": "choice" , "optional" : false , "children" : [ 
+        { "name": "getResourceInfo" , "optional" : false , "children" : [ 
+          { "name": "resourceInfo" , "optional" : false , "children" : [ 
+            { "name": "identity" , "optional" : false , "children" : [ 
+              { "name": "index" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+              { "name": "name" , "optional" : false , "children" : [ { "name" : "VisibleString"}]} , 
+              { "name": "version" , "optional" : false , "children" : [ 
+                { "name": "major" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+                { "name": "minor" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+                { "name": "build" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+                { "name": "revision" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} 
+              ]} 
+            ]} , 
+            { "name": "peripheralsCount" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "modulesCount" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+            { "name": "simulatedTime" , "optional" : false , "children" : [ { "name" : "BOOLEAN"}]} , 
+            { "name": "protocolMD5" , "optional" : false , "children" : [ { "name" : "VisibleString"}]} 
+          ]} 
+        ]} , 
+        { "name": "getPeripheralInfo" , "optional" : false , "children" : [ 
+          { "name": "peripheralInfo" , "optional" : false , "children" : [ 
+            { "name": "identity" , "optional" : false , "children" : [ { "name" : "Identity"}]} , 
+            { "name": "type" , "optional" : false , "children" : [ { "name" : "EPeripheralTypes"}]} 
+          ]} 
+        ]} , 
+        { "name": "getModuleInfo" , "optional" : false , "children" : [ 
+          { "name": "modulesInfo" , "optional" : false , "children" : [ { "name" : "ModulesInfo"}]} 
+        ]} , 
+        { "name": "getInfo" , "optional" : false , "children" : [ 
+          { "name": "resourceInfo" , "optional" : true , "children" : [ { "name" : "ResourceInfo"}]} , 
+          { "name": "modulesInfo" , "optional" : true , "children" : [ { "name" : "ModulesInfo"}]} , 
+          { "name": "peripheralsInfo" , "optional" : true , "children" : [ { "name" : "PeripheralsInfo"}]} 
+        ]} , 
+        { "name": "peripheralSelect" , "optional" : false , "children" : [ 
+          { "name": "peripheralId" , "optional" : false , "children" : [ { "name" : "EPeripheralIds"}]} 
+        ]} 
+      ]} 
+    ]} , 
+    { "name": "codeCoverageCommand" , "optional" : false , "children" : [ 
+      { "name": "timestamp" , "optional" : false , "children" : [ { "name" : "TimeStampType"}]} , 
+      { "name": "command" , "optional" : false , "children" : [ { "name" : "ECodeCoverageCommands"}]} , 
+      { "name": "cCodeCoverage" , "optional" : true , "children" : [ 
+        { "name": "results" , "optional" : false , "children" : [ 
+          { "name": "supervisorRate" , "optional" : false , "children" : [ { "name" : "REAL"}]} , 
+          { "name": "protectedRate" , "optional" : false , "children" : [ { "name" : "REAL"}]} , 
+          { "name": "numberOfInstructions" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+          { "name": "numberOfInstructionsAnalysed" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+          { "name": "supervisorMode" , "optional" : false , "children" : [ 
+            { "name": "range" , "optional" : false , "children" : [ 
+              { "name": "name" , "optional" : false , "children" : [ { "name" : "VisibleString"}]} , 
+              { "name": "coveredRate" , "optional" : false , "children" : [ { "name" : "REAL"}]} , 
+              { "name": "hitAddresses" , "optional" : false , "children" : [ { "name" : "HitAddresses"}]} 
+            ]} 
+          ]} 
+        ]} , 
+        { "name": "rangeDefinitions" , "optional" : false , "children" : [ { "name" : "RangeDefinitions"}]} 
+      ]} 
+    ]} , 
+    { "name": "error" , "optional" : false , "children" : [ 
+      { "name": "code" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+      { "name": "message" , "optional" : false , "children" : [ { "name" : "VisibleString"}]} 
+    ]} , 
+    { "name": "pmuCommand" , "optional" : false , "children" : [ 
+      { "name": "command" , "optional" : false , "children" : [ { "name" : "EPMUCommands"}]} , 
+      { "name": "values" , "optional" : true , "children" : [ 
+        { "name": "txFault" , "optional" : true , "children" : [ { "name" : "BOOLEAN"}]} , 
+        { "name": "simFault" , "optional" : true , "children" : [ { "name" : "BOOLEAN"}]} , 
+        { "name": "seFault" , "optional" : true , "children" : [ { "name" : "BOOLEAN"}]} , 
+        { "name": "se1Fault" , "optional" : true , "children" : [ { "name" : "BOOLEAN"}]} , 
+        { "name": "se2Fault" , "optional" : true , "children" : [ { "name" : "BOOLEAN"}]} , 
+        { "name": "xTAL" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "xTALType" , "optional" : true , "children" : [ { "name" : "ExTALType"}]} , 
+        { "name": "vField" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "vReaderField" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "vBat" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "vdd1p8v" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "vRstWUp" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "powerInSim" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "powerInSe" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "powerInSe1" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "powerInSe2" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "refIO" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} 
+      ]} , 
+      { "name": "timestamp" , "optional" : true , "children" : [ { "name" : "TimeStampType"}]} 
+    ]} , 
+    { "name": "timestamp" , "optional" : false , "children" : [ { "name" : "TimeStampType"}]} , 
+    { "name": "timeout" , "optional" : false , "children" : [ { "name" : "TimeOut"}]} , 
+    { "name": "emulatorCommand" , "optional" : false , "children" : [ 
+      { "name": "command" , "optional" : false , "children" : [ { "name" : "EEmulatorCommands"}]} 
+    ]} , 
+    { "name": "group" , "optional" : true , "children" : [ { "name" : "GroupedPDUs"}]} , 
+    { "name": "risenEvent" , "optional" : false , "children" : [ 
+      { "name": "event" , "optional" : false , "children" : [ 
+        { "name": "present" , "optional" : false , "children" : [ 
+         { "name": "(0)Event_PR_NOTHING" } , 
+         { "name": "(1)Event_PR_EDebugEvents" } , 
+         { "name": "(2)Event_PR_EDataExchangeEvents" } 
+        ]} , 
+        { "name": "choice" , "optional" : false , "children" : [ 
+          { "name": "debugEvent" , "optional" : false , "children" : [ { "name" : "EDebugEvents"}]} , 
+          { "name": "dataExchangeEvent" , "optional" : false , "children" : [ { "name" : "EDataExchangeEvents"}]} , 
+          { "name": "swpEvent" , "optional" : false , "children" : [ { "name" : "ESWPEvents"}]} 
+        ]} 
+      ]} , 
+      { "name": "timestamp" , "optional" : true , "children" : [ { "name" : "TimeStampType"}]} 
+    ]} , 
+    { "name": "memoryMapping" , "optional" : false , "children" : [ 
+      { "name": "name" , "optional" : false , "children" : [ { "name" : "VisibleString"}]} , 
+      { "name": "id" , "optional" : true , "children" : [ { "name" : "VisibleString"}]} , 
+      { "name": "description" , "optional" : true , "children" : [ { "name" : "VisibleString"}]} , 
+      { "name": "baseAddress" , "optional" : true , "children" : [ { "name" : "VisibleString"}]} , 
+      { "name": "registerCollection" , "optional" : false , "children" : [ { "name" : "RegisterCollection"}]} , 
+      { "name": "bufferCollection" , "optional" : false , "children" : [ { "name" : "BufferCollection"}]} 
+    ]} , 
+    { "name": "traceCommand" , "optional" : false , "children" : [ 
+      { "name": "command" , "optional" : false , "children" : [ { "name" : "ETraceCommands"}]} , 
+      { "name": "parameters" , "optional" : true , "children" : [ 
+        { "name": "peripheralId" , "optional" : true , "children" : [ { "name" : "EPeripheralIds"}]} , 
+        { "name": "level" , "optional" : true , "children" : [ { "name" : "ETraceLevels"}]} , 
+        { "name": "channel" , "optional" : true , "children" : [ { "name" : "VisibleString"}]} , 
+        { "name": "message" , "optional" : true , "children" : [ { "name" : "VisibleString"}]} , 
+        { "name": "space" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+        { "name": "register" , "optional" : true , "children" : [ { "name" : "VisibleString"}]} , 
+        { "name": "bitfield" , "optional" : true , "children" : [ { "name" : "VisibleString"}]} 
+      ]} , 
+      { "name": "timeStamp" , "optional" : true , "children" : [ { "name" : "TimeStampType"}]} , 
+      { "name": "channels" , "optional" : true , "children" : [ { "name" : "Channels"}]} 
+    ]} , 
+    { "name": "mappingTrace" , "optional" : false , "children" : [ 
+      { "name": "space" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} , 
+      { "name": "register" , "optional" : false , "children" : [ { "name" : "VisibleString"}]} , 
+      { "name": "bitfield" , "optional" : true , "children" : [ { "name" : "VisibleString"}]} , 
+      { "name": "startbit" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+      { "name": "stopbit" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+      { "name": "oldvalue" , "optional" : true , "children" : [ { "name" : "INTEGER"}]} , 
+      { "name": "value" , "optional" : false , "children" : [ { "name" : "INTEGER"}]} 
+    ]} 
+  ]} ]}

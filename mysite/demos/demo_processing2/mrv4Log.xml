@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log>
+<logentry
+   revision="438">
+<author>droubinet</author>
+<date>2012-11-12T17:28:39.452820Z</date>
+<msg>Propagate none-16-bits register handling</msg>
+</logentry>
+<logentry
+   revision="430">
+<author>droubinet</author>
+<date>2012-11-12T12:52:39.940990Z</date>
+<msg>Drawing trials</msg>
+</logentry>
+<logentry
+   revision="429">
+<author>droubinet</author>
+<date>2012-11-12T12:49:33.659347Z</date>
+<msg>Drawing trials</msg>
+</logentry>
+<logentry
+   revision="423">
+<author>droubinet</author>
+<date>2012-11-09T14:08:41.454865Z</date>
+<msg>Better mime-type</msg>
+</logentry>
+<logentry
+   revision="421">
+<author>droubinet</author>
+<date>2012-11-09T13:53:25.651816Z</date>
+<msg>Better doc trial, xhtml injection</msg>
+</logentry>
+<logentry
+   revision="366">
+<author>droubinet</author>
+<date>2012-10-29T10:59:18.424393Z</date>
+<msg>Enable xhtml into Description</msg>
+</logentry>
+<logentry
+   revision="365">
+<author>droubinet</author>
+<date>2012-10-26T12:34:11.900806Z</date>
+<msg>Better html generation with more &lt;description&gt; node displayed</msg>
+</logentry>
+<logentry
+   revision="352">
+<author>droubinet</author>
+<date>2012-10-22T14:57:53.713931Z</date>
+<msg>size of registers is now in bits</msg>
+</logentry>
+<logentry
+   revision="214">
+<author>droubinet</author>
+<date>2012-09-19T15:02:56.097172Z</date>
+<msg>Better Address Space</msg>
+</logentry>
+<logentry
+   revision="179">
+<author>droubinet</author>
+<date>2012-09-14T15:17:34.343601Z</date>
+<msg>Removing css dependencies</msg>
+</logentry>
+<logentry
+   revision="164">
+<author>droubinet</author>
+<date>2012-09-14T14:15:40.579337Z</date>
+<msg>xsl work-around</msg>
+</logentry>
+<logentry
+   revision="163">
+<author>droubinet</author>
+<date>2012-09-14T14:14:34.339134Z</date>
+<msg>xsl work-around</msg>
+</logentry>
+<logentry
+   revision="161">
+<author>droubinet</author>
+<date>2012-09-14T13:53:43.519375Z</date>
+<msg>xsl back with xml</msg>
+</logentry>
+<logentry
+   revision="158">
+<author>droubinet</author>
+<date>2012-09-14T13:19:58.197899Z</date>
+<msg>xsl back with xml</msg>
+</logentry>
+<logentry
+   revision="157">
+<author>droubinet</author>
+<date>2012-09-14T13:14:06.060530Z</date>
+<msg>xsl back with xml</msg>
+</logentry>
+<logentry
+   revision="156">
+<author>droubinet</author>
+<date>2012-09-14T13:07:37.291240Z</date>
+<msg>xsl back with xml</msg>
+</logentry>
+<logentry
+   revision="129">
+<author>droubinet</author>
+<date>2012-09-11T16:10:55.276194Z</date>
+<msg>New site</msg>
+</logentry>
+<logentry
+   revision="97">
+<author>creynaud</author>
+<date>2012-09-05T05:58:14.433446Z</date>
+<msg>Fix bug : Pipeline registers offset were wrong</msg>
+</logentry>
+<logentry
+   revision="89">
+<author>droubinet</author>
+<date>2012-09-03T09:07:44.905658Z</date>
+<msg>Better mime-type</msg>
+</logentry>
+<logentry
+   revision="88">
+<author>droubinet</author>
+<date>2012-09-03T09:04:51.909058Z</date>
+<msg>js rules</msg>
+</logentry>
+<logentry
+   revision="80">
+<author>creynaud</author>
+<date>2012-08-30T07:42:34.206575Z</date>
+<msg>Some modifications in Micro Advx memory mapping
+Changes in xsl file</msg>
+</logentry>
+<logentry
+   revision="74">
+<author>creynaud</author>
+<date>2012-08-30T06:26:13.558322Z</date>
+<msg>Add registers infos for ISO7816 and Pipeline</msg>
+</logentry>
+<logentry
+   revision="66">
+<author>creynaud</author>
+<date>2012-08-06T13:11:31.719493Z</date>
+<msg>Add bitfields description</msg>
+</logentry>
+<logentry
+   revision="57">
+<author>droubinet</author>
+<date>2012-07-25T15:25:58.250945Z</date>
+<msg>bit grouping</msg>
+</logentry>
+<logentry
+   revision="56">
+<author>droubinet</author>
+<date>2012-07-25T13:39:42.326795Z</date>
+<msg>Feed back from Gael : better names, badly-formed bit fields fixed, more values</msg>
+</logentry>
+<logentry
+   revision="52">
+<author>droubinet</author>
+<date>2012-07-19T15:21:52.330720Z</date>
+<msg>Importing SWP spec, typos in PMU, better html display</msg>
+</logentry>
+<logentry
+   revision="51">
+<author>droubinet</author>
+<date>2012-07-19T08:57:07.250568Z</date>
+<msg>Better nale for TVAL2_CTRL</msg>
+</logentry>
+<logentry
+   revision="50">
+<author>droubinet</author>
+<date>2012-07-18T16:10:12.292930Z</date>
+<msg>Better navigation</msg>
+</logentry>
+<logentry
+   revision="49">
+<author>droubinet</author>
+<date>2012-07-18T15:45:10.092232Z</date>
+<msg>typo</msg>
+</logentry>
+<logentry
+   revision="48">
+<author>droubinet</author>
+<date>2012-07-18T15:38:10.225649Z</date>
+<msg>Better bit names</msg>
+</logentry>
+<logentry
+   revision="47">
+<author>droubinet</author>
+<date>2012-07-18T14:29:28.294841Z</date>
+<msg>More access modes, and bitfield splitting</msg>
+</logentry>
+<logentry
+   revision="46">
+<author>droubinet</author>
+<date>2012-07-18T09:58:49.939397Z</date>
+<msg>Some access mode on uartp</msg>
+</logentry>
+<logentry
+   revision="45">
+<author>droubinet</author>
+<date>2012-07-17T08:35:33.245233Z</date>
+<msg>PMU RC1 bit breakdown fixed</msg>
+</logentry>
+<logentry
+   revision="41">
+<author>droubinet</author>
+<date>2012-07-11T12:14:22.461519Z</date>
+<msg>Better html display</msg>
+</logentry>
+<logentry
+   revision="40">
+<author>droubinet</author>
+<date>2012-07-11T12:08:44.536150Z</date>
+<msg>Standard File name</msg>
+</logentry>
+<logentry
+   revision="29">
+<author>droubinet</author>
+<date>2012-07-06T14:32:44.861439Z</date>
+<msg>Page layout
+M    trunk/memmaps/mrv4/MemoryMapping.xsl
+M    trunk/css/style.css
+</msg>
+</logentry>
+<logentry
+   revision="28">
+<author>droubinet</author>
+<date>2012-07-06T14:24:18.578162Z</date>
+<msg>Better html display, more doc in HOST</msg>
+</logentry>
+<logentry
+   revision="24">
+<author>droubinet</author>
+<date>2012-07-05T13:38:10.314482Z</date>
+<msg>Some colors
+
+M    trunk/memmaps/mrv4/MemoryMapping.xsl
+M    trunk/memmaps/mrv4/ProductMapping.xsl
+A    trunk/css
+A    trunk/css/style.css
+</msg>
+</logentry>
+<logentry
+   revision="18">
+<author>droubinet</author>
+<date>2012-07-04T16:02:33.548590Z</date>
+<msg>Fixed access on buffers</msg>
+</logentry>
+<logentry
+   revision="15">
+<author>droubinet</author>
+<date>2012-07-04T10:06:09.268754Z</date>
+<msg>Better Access description
+
+D    mrv4/MemoryMapping_RXTX.xml
+M    mrv4/MemoryMapping_CARDDET.xml
+M    mrv4/MemoryMapping_RFROUTER.xml
+M    mrv4/MemoryMapping_SWP.xml
+M    mrv4/MemoryMapping_CLK.xml
+M    mrv4/MemoryMapping_SEC.xml
+M    mrv4/MemoryMapping_HOST.xml
+D    mrv4/MemoryMapping_I2C.xml
+M    mrv4/MemoryMapping_SYS.xml
+M    mrv4/MemoryMapping_TEST.xml
+M    mrv4/MemoryMapping_ISO7816.xml
+M    mrv4/MemoryMapping_UARTH.xml
+M    mrv4/MemoryMapping.xsl
+D    mrv4/MemoryMapping_TVAL2.xml
+D    mrv4/MemoryMapping_SPI.xml
+M    mrv4/MemoryMapping_MISC.xml
+M    mrv4/MemoryMapping_UARTP.xml
+M    mrv4/MemoryMapping_PIPE.xml
+M    mrv4/MemoryMapping_GPIO.xml
+M    mrv4/MemoryMapping_PMU.xml
+</msg>
+</logentry>
+<logentry
+   revision="14">
+<author>droubinet</author>
+<date>2012-07-03T15:08:58.304447Z</date>
+<msg>Better html display
+
+M    mrv4/MemoryMapping.xsl
+</msg>
+</logentry>
+<logentry
+   revision="13">
+<author>droubinet</author>
+<date>2012-07-03T14:53:44.068913Z</date>
+<msg>Better names</msg>
+</logentry>
+<logentry
+   revision="12">
+<author>droubinet</author>
+<date>2012-07-03T14:09:29.178538Z</date>
+<msg>better mime type
+
+_M   mrv4/MemoryMapping_HOST.xml
+</msg>
+</logentry>
+<logentry
+   revision="11">
+<author>droubinet</author>
+<date>2012-07-03T14:08:21.935018Z</date>
+<msg>Buffer split and better names
+M    mrv4/MemoryMapping_SWP.xml
+M    mrv4/MemoryMapping_HOST.xml
+</msg>
+</logentry>
+<logentry
+   revision="10">
+<author>droubinet</author>
+<date>2012-07-03T13:59:57.803831Z</date>
+<msg>Better register gouping</msg>
+</logentry>
+<logentry
+   revision="9">
+<author>droubinet</author>
+<date>2012-07-03T12:30:14.597052Z</date>
+<msg>Splitted buffer</msg>
+</logentry>
+<logentry
+   revision="8">
+<author>droubinet</author>
+<date>2012-07-03T09:11:30.574912Z</date>
+<msg>Better mime type</msg>
+</logentry>
+<logentry
+   revision="7">
+<author>droubinet</author>
+<date>2012-07-03T08:26:30.177731Z</date>
+<msg>Automatic import from csv</msg>
+</logentry>
+<logentry
+   revision="6">
+<author>droubinet</author>
+<date>2012-07-02T14:09:30.040882Z</date>
+<msg>Forcing mime-type from svn</msg>
+</logentry>
+<logentry
+   revision="5">
+<author>droubinet</author>
+<date>2012-07-02T14:07:36.396677Z</date>
+<msg>Forcing mime-type from svn</msg>
+</logentry>
+<logentry
+   revision="4">
+<author>droubinet</author>
+<date>2012-07-02T14:02:23.802865Z</date>
+<msg>Forcing mime-type from svn</msg>
+</logentry>
+<logentry
+   revision="3">
+<author>droubinet</author>
+<date>2012-06-28T14:04:53.283716Z</date>
+<msg>Automated import from csv</msg>
+</logentry>
+</log>

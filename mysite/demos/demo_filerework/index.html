@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+  <head>  
+      <title> LocalStorage </title>
+      <style type="text/css"> 
+          body             { background: lightsteelblue; }
+          .icon rect       { cursor: pointer; fill: steelblue; stroke-width: 1.5px; }
+          .icon rect:hover { fill: darkred; }
+          .icon path       { fill: none; stroke: #ccc; stroke-width: 5.0px; stroke-linecap: round; stroke-linejoin:round} 
+      </style>
+  </head>  
+  <body>  
+   <h1> Local Storage </h1>
+   <h2> Controls </h2>
+     <div class="controls">
+     <svg width="32" height="32" class="icon" onclick="boilerPlateToFile()"> <g>
+       <title> Download </title>
+       <rect x="2" y="2" width="28" height="28" rx="4" ry="4"/>
+       <path d="m16,6 0,20 -9,-10 9,10 9,-10"/>
+     </g> </svg>
+     <svg width="32" height="32" class="icon" onclick="fileToBoilerPlate()"> <g>
+       <title>Upload</title>
+       <rect x="2" y="2" width="28" height="28" rx="4" ry="4"/>
+       <path d="m16,26 0,-20 -9,10 9,-10 9,10"/>
+     </g> </svg>
+     <svg width="32" height="32" class="icon" onclick="boilerPlateToFridge()"> <g>
+       <title>Store in Slot</title>
+       <rect x="2" y="2" width="28" height="28" rx="4" ry="4"/>
+       <path d="m6,16 20,0 -10,-9 10,9 -10,9"/>
+     </g> </svg>
+     <svg width="32" height="32" class="icon" onclick="fridgeToBoilerPlate()"> <g>
+       <title>Retrieve from Slot</title>
+       <rect x="2" y="2" width="28" height="28" rx="4" ry="4"/>
+       <path d="m26,16 -20,0 10,-9 -10,9 10,9"/>
+     </g> </svg>
+     <svg width="32" height="32" class="icon" onclick="fridge.new()"> <g>
+       <title>Create a Slot</title>
+       <rect x="2" y="2" width="28" height="28" rx="4" ry="4"/> 
+       <path d="m26,16 -20,0 10,0 0,10 0,-20"/>
+     </g>  </svg>
+     <svg width="32" height="32" class="icon" onclick="fridge.del()"> <g>
+       <title>Delete a Slot</title>
+       <rect x="2" y="2" width="28" height="28" rx="4" ry="4"/>
+       <path d="m26,26 -20,-20 10,10 -10,10 20,-20"/>
+     </g> </svg>
+     Slots: <select id="selInFridge" onchange="fridge.sel()"> </select>         
+     </div>
+   <h2> Boiler Plate </h2>
+   <div class="Display">
+     <form name="boilerPlate">
+       <textarea name="data" cols="50" rows="10">Sample text </textarea>
+     </form>
+   </div>
+   <div id="uploadForm" style="filter:alpha(opacity=0); opacity: 0.0; width: 300px; cursor: pointer;">     
+     <form name="uploadForm" method="POST" enctype="multipart/form-data">
+         <input type="file" name="file" onchange="upload(this)"/> 
+     </form>
+   </div>
+   <script type='text/javascript'>  
+      function fileToBoilerPlate() {     
+          document.forms["uploadForm"].file.click();
+        }  
+      function upload(input) {     
+        var fileReader   = new FileReader();     
+        fileReader.onload = function(fileLoadedEvent) {        
+          var textFromImport = fileLoadedEvent.target.result;         
+          document.forms["boilerPlate"].data.value = textFromImport;
+          };     
+        fileReader.readAsText(input.files[0], "UTF-8"); 
+        }  
+      function boilerPlateToFile() {    
+        var fileNameToSaveAs  = prompt("Save As:","dummy.txt"); 
+        var textToWrite       = document.forms["boilerPlate"].data.value;
+        var textFileAsBlob    = new Blob([textToWrite], {type:'text/plain'});     
+        var downloadLink      = document.createElement("a");     
+        downloadLink.href     = window.webkitURL.createObjectURL(textFileAsBlob);     
+        downloadLink.download = fileNameToSaveAs;     
+        downloadLink.click();     
+        }  
+      function boilerPlateToFridge() {    
+        var key = fridge.get("currentSlot");
+        if ( key != "none" ) {
+          localStorage.setItem(key,document.forms["boilerPlate"].data.value);
+        }else{
+          alert("Select a slot first!");
+        };
+        }
+      function fridgeToBoilerPlate() {    
+        var key = fridge.get("currentSlot");
+        if ( key != "none" ) {
+          document.forms["boilerPlate"].data.value=localStorage.getItem(key);
+        }else{
+          alert("Select a slot first!");
+        };
+        }  
+      var fridge = { 
+           "empty": function() {
+                      var emptyFridge = {"slots":["none"],"currentSlot":"none"};
+                      this.close(emptyFridge);
+                      return emptyFridge;
+                    },
+           "open" : function() {
+                      return JSON.parse(localStorage.getItem("fridgePersistence")) || this.empty();     
+                    },
+           "close": function(contents) {
+                      localStorage.setItem("fridgePersistence", JSON.stringify(contents)); 
+                    },
+           "get"  : function(key) {
+                      var fetched = this.open();     
+                      return fetched[key];
+                    },
+           "set"  : function(key,val) {
+                      var fetched = this.open();     
+                      fetched[key]=val;
+                      this.close(fetched);
+                      return true;
+                    },  
+           "new"  : function() {
+                      var key   = prompt("new label:","dummy.txt"); 
+                      var slots = this.get("slots");
+                      if( key!=null && slots.indexOf(key)==-1) { 
+                        slots.push(key);
+                        this.set("slots",slots);
+                        this.set("currentSlot",key);
+                        this.menu();
+                        } 
+                      else { alert( "Sorry... try again?"); };
+                    },
+           "del"  : function() {
+                      var slots = this.get("slots");
+                      var key   = this.get("currentSlot");
+                      if ( key!="none" && slots.indexOf(key)!=-1 ) { 
+                        slots.pop(key);
+                        this.set("slots",slots);
+                        this.unsel();
+                        this.menu();
+                        localStorage.removeItem(key);
+                        } 
+                      else { alert( "Select a slot first!"); };
+                    },
+           "unsel": function() {
+                        document.getElementById('selInFridge').value="none";      
+                        return this.set("currentSlot","none");
+                    },
+           "sel"  : function() {
+                      var slots = this.get("slots");
+                      var newSel = document.getElementById('selInFridge').value;      
+                      if (slots.indexOf(newSel)==-1) { 
+                        return false; 
+                        } 
+                      else {
+                        return this.set("currentSlot",newSel);
+                        };
+                    },
+           "menu" : function() {
+                      var selector = document.getElementById("selInFridge");
+                      var i;
+                      for(i=selector.options.length-1;i>=0;i--){         
+                          selector.remove(i);     
+                      };
+                      this.get("slots").forEach( function(slot) {
+                        opt = document.createElement("option");
+                        opt.text  = slot;  
+                        opt.value = slot;  
+                        selector.add(opt);
+                       });
+                      selector.value = this.get("currentSlot");
+                    }
+           };
+        fridge.menu();
+        if( fridge.get("currentSlot") != "none" ) { 
+          fridgeToBoilerPlate() 
+        };
+   </script>
+</body> 
+</html>

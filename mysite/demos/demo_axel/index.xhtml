@@ -1,0 +1,58 @@
+<!DOCTYPE html>  
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:xt="http://ns.inria.org/xtiger" xml:lang="en">   
+<head>                       
+  <link href="axel.css" rel="stylesheet" type="text/css"></link>     
+  <script src="jquery.min.js">//</script>    
+  <script src="axel.max.js">//</script>     
+  <script data-bundles-path="bundles" src="axel-forms.max.js">//</script>      
+
+  <xt:head version="1.1" templateVersion="1.0" label="map">
+    <xt:component name="ip">
+      <h1> IP: <xt:use types="text" label="name" param="shape=parent;type=textarea">My Full IP Name</xt:use> </h1> 
+      <p> Prefix: <xt:attribute types="text" name="label" default="MYIP"/> </p> 
+      <p> 
+           <xt:use types="text" label="Description" param="shape=parent;type=textarea">The IP level description goes here ...</xt:use>
+      </p>
+      <h2> Registers </h2>
+        <xt:repeat minOccurs="0" maxOccurs="*" label="registers">
+          <li><xt:use types="text" label="register" param="shape=parent-75px;type=textarea">name</xt:use><xt:menu-marker/></li>
+        </xt:repeat>
+      <h2> Buffers </h2>
+        <xt:repeat minOccurs="0" maxOccurs="*" label="buffers">
+          <xt:use types="buffer" label="buffer">name</xt:use><xt:menu-marker/>
+        </xt:repeat>
+    </xt:component> 
+    <xt:component name="buffer">
+      <li> <xt:use types="text" label="name" param="shape=parent;type=textarea">My Full Name</xt:use> 
+          ( <xt:attribute types="text" name="label" default="MYLABEL"/> )
+          <xt:menu-marker/>
+      </li>
+      <div class="record">
+      <span data-regexp="^\d{1,6}$" data-variable="size" data-binding="regexp" data-error-scope=".record">
+         Size: <xt:attribute param="filter=event;type=text;id=size" name="size" types="input" default="128"></xt:attribute> bytes
+      </span>
+      <span class="af-error" data-regexp-error="size">Invalid size ! Enter an integer</span>
+      </div>
+      <p> 
+        <xt:use types="text" label="Description" param="shape=parent;type=textarea">The description goes here ...</xt:use>
+      </p>
+    </xt:component>
+  </xt:head>   
+  <style>
+     .af-error { color: red ; display: none ;}
+  </style>
+</head>   
+<body id="editor" data-template="#">     
+ <div class="content">
+  <p>Boiler Plate</p>
+  <div id="document" style="padding: 20px 10px 10px 10px">
+    <p class="template"></p>
+    <xt:use types="ip"/>
+  </div>  
+  <button data-command="dump" data-target="editor">DUMP</button>
+  <div> 
+    <pre id="dumpZone"> </pre>
+  </div>
+ </div> 
+</body> 
+</html>

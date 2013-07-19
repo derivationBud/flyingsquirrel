@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+import xml.etree.ElementTree as ET 
+tree = ET.parse('ProtocolDescription.xml') 
+root = tree.getroot()
+fo = file("ProtocolDescription.json","w")
+print "Creating",fo.name
+
+bookOfTypes = {}
+for child in root.findall(".//type"):
+    typeName=child.attrib["name"]
+    bookOfTypes[typeName]={"fields":[],"values":[]}
+    for subField in child.findall("./field"):
+        bookOfTypes[typeName]["fields"].append(subField.attrib["name"])
+    for subVal in child.findall("./values/value"):
+        bookOfTypes[typeName]["values"].append(  subVal.attrib["name"])
+bookOfFields = {}
+for child in root.findall(".//field"):
+    fieldName=child.attrib["name"]
+    typeName=child.attrib["type"]
+    bookOfFields[fieldName]=typeName
+
+for k in bookOfTypes:
+    for x in ["fields","values"]:
+        if bookOfTypes[k][x]: print k,bookOfTypes[k][x]
+
+def walk(fieldName,level):
+    print >>fo,'\n%s{ "name": "%s"'%(level*"  ",fieldName),
+    typeName = bookOfFields[fieldName]
+    if typeName in bookOfTypes:
+        children=False
+        if bookOfTypes[typeName]["fields"]:
+            print >>fo,', "children" : [',
+            skipComma = True
+            for child in bookOfTypes[typeName]["fields"]:
+                if not skipComma: 
+                    print >>fo,",",
+                    skipComma = False
+                walk(child,level+1)
+            print >>fo,'\n%s]}'%(level*"  "),
+        if bookOfTypes[typeName]["values"]:
+            msg = ",".join(['"%s"'%(x) for x in bookOfTypes[typeName]["values"]])
+            print >>fo,', "children" : [',msg,']',
+    else:
+        print >>fo,', "children" : [',typeName,']',
+    #if level: 
+    #    if children:    print >>fo,'\n%s]}'%(level*"  "),
+    #    else:           print >>fo,'}',
+
+bookOfFields["asn"]="ToolsPDUs"
+walk("asn",0)
+print >>fo,']}',
+fo.close()
+

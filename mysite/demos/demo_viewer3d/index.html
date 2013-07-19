@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    body{background-color: #000;color: #fff;font-family:arial}
+  </style>
+  <script src="demo_viewer3d/js/glge-compiled.js"></script>
+  <script src="demo_viewer3d/js/glge_turntablecamera.js"></script>
+</head>
+<body>
+    <h2>Packaging Viewer</h2>
+    <p>Once loaded, Click-n-Drag or Scrollwheel the 3D canvas...</p>
+
+    <div style="width:900px;margin:auto;position:relative" id="container">
+    <canvas id="canvas" width="650" height="400"></canvas> 
+    </div>
+
+    <p style="position:absolute; left: 450px;">... brought to you by <i>droub</i></p>
+
+    <script id="glge_scene" type="text/xml">
+      <glge>
+        <scene id            = "mainScene" 
+            ambient_color    = "#ddd" 
+            background_color = "#cce" 
+            fog_near         = "50" 
+            fog_far          = "100" 
+            fog_color        = "#888" 
+            fog_type         = "FOG_LINEAR" >
+            <light id        = "light" 
+                loc_x        = "50" 
+                loc_y        = "5" 
+                loc_z        = "50" 
+                type         = "L_POINT" />
+            <light id        = "light" 
+                loc_x        = "50" 
+                loc_y        = "-10" 
+                loc_z        = "-50" 
+                type         = "L_POINT" />
+            <light id        = "light" 
+                loc_x        = "-50" 
+                loc_y        = "5" 
+                loc_z        = "-50" 
+                type         = "L_POINT" />
+            <light id        = "light" 
+                loc_x        = "-50" 
+                loc_y        = "5" 
+                loc_z        = "50" 
+                type         = "L_POINT" />
+            <!--
+            <light id        = "light" 
+                loc_x        = "50" 
+                loc_y        = "10" 
+                loc_z        = "50" 
+                rot_x        = "1.57" 
+                spot_cut_off = "FALSE"
+                spot_soft_distance = "0.5"
+                spot_softness = "5"
+                cast_shadows = "TRUE"
+                attenuation_quadratic = "0"
+                attenuation_linear = "0"
+                attenuation_constant = "1.5"
+                type         = "L_SPOT" />
+            -->
+            <collada id      = "obj" 
+                document     = "demo_viewer3d/obj.dae" 
+                loc_y        = "4" 
+                scale        = "0.02" />
+        </scene>
+      </glge>
+    </script>
+    <script>
+      var doc = new GLGE.Document();
+      var canvas = document.getElementById('canvas');
+      var renderer = new GLGE.Renderer(canvas);
+      var camera=new GLGE.TurntableCamera({
+            Canvas:        canvas,
+            Offset:            50,
+            LatitudeMin:       -1.5,
+            LatitudeMax:        1.5,
+            Latitude:           0.0,
+            Longitude:          0.0,
+            InitialLatitude:    0.1,
+            InitialOffset:     50,
+            LocY:               5
+        });
+      doc.onLoad = function() {
+        var mainScene = doc.getElement('mainScene');
+        mainScene.setCamera(camera);
+        renderer.setScene(mainScene);
+        setInterval(function() {
+          renderer.render();
+        }, 1000 / 30);
+      };
+    doc.parseScript("glge_scene");
+    </script>
+  </body>
+</html>

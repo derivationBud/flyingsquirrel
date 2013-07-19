@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:xt="http://ns.inria.org/xtiger">
+<head>
+  <title>AXEL Demo</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=8;" />   
+  <meta name="description" content="AXEL tutorial for rendering an XTiger XML template" />
+  <meta name="keywords" content="template, XTiger, XML" />
+  <link rel="stylesheet" type="text/css" href="jquery-ui-1.8.18.custom.css"></link>
+  <script src="jquery.min.js"></script>     
+  <script type="text/javascript" src="jquery-ui-1.8.18.custom.min.js"></script>
+  <xt:head version="1.1" templateVersion="1.0" label="map">
+
+    <xt:component name="ip">
+      <h1> IP: <xt:use types="text" label="name" param="shape=parent;type=textarea">My Full IP Name</xt:use> </h1> 
+      <p> Prefix: <xt:attribute types="text" name="label" default="MYIP"/> </p> 
+      <p> 
+           <xt:use types="text" label="Description" param="shape=parent;type=textarea">The IP level description goes here ...</xt:use>
+      </p>
+      <h2> Registers </h2>
+        <xt:repeat minOccurs="0" maxOccurs="*" label="registers">
+          <li><xt:use types="text" label="register" param="shape=parent-75px;type=textarea">name</xt:use><xt:menu-marker/></li>
+        </xt:repeat>
+      <h2> Buffers </h2>
+        <xt:repeat minOccurs="0" maxOccurs="*" label="buffers">
+          <xt:use types="buffer" label="buffer">name</xt:use><xt:menu-marker/>
+        </xt:repeat>
+    </xt:component> 
+    <xt:component name="buffer">
+      <li> <xt:use types="text" label="name" param="shape=parent;type=textarea">My Full Name</xt:use> 
+          ( <xt:attribute types="text" name="label" default="MYLABEL"/> )
+          <xt:menu-marker/>
+      </li>
+      <span data-regexp="^\d{1,3}$" data-variable="age" data-binding="regexp" data-error-scope=".record">
+         <label for="Age">Age : </label>
+         <xt:use param="filter=event;type=text;id=Age" label="Age" types="input"> 12</xt:use> 
+      </span>
+      <span class="af-error" data-regexp-error="age">Invalid age enter a number</span>
+      <p>
+          Size: <xt:attribute types="text" name="size" default="256"/> bytes
+      </p>
+      <div data-regexp="^\s*$|^\w([-.]?\w)+@\w([-.]?\w)+\.[a-z]{2,6}$" data-variable="mail" data-binding="regexp">   
+        <label for="Courriel">Courriel</label>   
+        <xt:use param="filter=event;type=text;id=Courriel" label="Email" types="input"/>   
+        <p class="af-error" data-regexp-error="mail">Invalid email address</p> 
+      </div>
+      <p> 
+           <xt:use types="text" label="Description" param="shape=parent;type=textarea">The description goes here ...</xt:use>
+      </p>
+    </xt:component>
+
+  </xt:head>    
+
+  <link rel="stylesheet" href="demo.css" type="text/css"/>
+  <!-- AXEL template manipulations illustrated in the tutorial   -->  
+  <script type="text/javascript" src="tut/src/common.js"></script>
+  
+  <!-- AXEL block to turn the template into an editor  -->
+  <script type="text/javascript" src="axel.max.js"></script>
+  <link rel="stylesheet" href="axel.css" type="text/css"></link>
+  <script type="text/javascript" src="axel-forms.max.js"></script>
+  <style type="text/css"> .af-error {display: none;color: red;}</style>
+  <script type="text/javascript">                        
+    var form;
+    function init() {
+        form = new xtiger.util.Form('tut/axel/bundles');
+        form.setTemplateSource(document);
+        form.enableTabGroupNavigation();
+        if (! form.transform()) { alert(this .form.msg); }
+    }
+    xtdom.addEventListener(window,  'load', init, false);
+  </script>
+</head>
+<body>
+ <div class="content">
+  <p>Boiler Plate</p>
+  <div id="document" style="padding: 20px 10px 10px 10px">
+    <p class="template"></p>
+    <xt:use types="ip"/>
+  </div>  
+  <p><a href="javascript:feed(true)">Load</a> an XML document into the editor</p>
+  <p><a href="javascript:dump(true)">Dump</a> the XML document from the editor </p>
+  <div> 
+    <pre id="content"> </pre>
+  </div>
+ </div> 
+</body>
+</html>
